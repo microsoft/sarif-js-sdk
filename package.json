@@ -15,8 +15,8 @@
     "build:watch": "tsc --watch",
     "clean": "tsc --build --clean",
     "lint": "eslint . --ext .ts",
-    "prepare": "yarn build",
-    "test": "yarn workspaces run test"
+    "prepare": "npm run build",
+    "test": "npm run test --workspaces"
   },
   "devDependencies": {
     "@types/sarif": "^2.1.3",
