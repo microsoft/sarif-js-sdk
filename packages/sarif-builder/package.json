@@ -1,0 +1,14 @@
+{
+  "name": "@microsoft/sarif-builder",
+  "version": "0.0.1",
+  "description": "A SARIF log builder for JavaScript",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "repository": "https://github.com/microsoft/sarif-js-sdk",
+  "author": "Microsoft Corporation",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc --build",
+    "test": "jest --passWithNoTests"
+  }
+}
