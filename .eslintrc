@@ -8,11 +8,11 @@
   "plugins": ["@typescript-eslint", "filenames", "jest", "prettier"],
   "extends": [
     "eslint:recommended",
-    "prettier",
     "plugin:jest/recommended",
     "plugin:jest/style",
     "plugin:node/recommended",
-    "plugin:unicorn/recommended"
+    "plugin:unicorn/recommended",
+    "plugin:prettier/recommended"
   ],
   "settings": {
     "node": {
@@ -32,7 +32,6 @@
     "es6": true
   },
   "rules": {
-    "prettier/prettier": "error",
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars-experimental": "error",
