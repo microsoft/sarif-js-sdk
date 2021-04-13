@@ -10,5 +10,8 @@
   "scripts": {
     "build": "tsc --build",
     "test": "jest --passWithNoTests"
+  },
+  "engines": {
+    "node": ">= 12.11.*"
   }
 }

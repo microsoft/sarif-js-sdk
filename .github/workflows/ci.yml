@@ -2,17 +2,17 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   lint:
     # run linting with our development node/npm versions (per package.json
     # volta config)
 
-    name: "Lint - ${{ matrix.os }}"
-    runs-on: "${{ matrix.os }}-latest"
+    name: 'Lint - ${{ matrix.os }}'
+    runs-on: '${{ matrix.os }}-latest'
 
     strategy:
       matrix:
@@ -21,35 +21,40 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: volta-cli/action@v1
-      - run: npm ci
-      - run: npm run lint
+      - name: install dependencies
+        run: npm install
+      - name: lint
+        run: npm run lint
 
   test:
     # run linting with our development node/npm versions (per package.json
     # volta config)
 
-    name: "Tests - Node (${{ matrix.node-version }}) - ${{ matrix.os }}"
-    runs-on: "${{ matrix.os }}-latest"
+    name: 'Tests - Node (${{ matrix.node-version }}) - ${{ matrix.os }}'
+    runs-on: '${{ matrix.os }}-latest'
 
     strategy:
       matrix:
         os: [windows, ubuntu]
-        node-version: [10.x, 12.x, 14.x, 15.x]
+        node-version: [12.x, 14.x, 15.x]
 
     steps:
       - uses: actions/checkout@v2
       - uses: volta-cli/action@v1
-      - run: npm ci
-      - run: npm run build
-      - run: npm test
+      - name: install dependencies
+        run: npm install
+      - name: build
+        run: npm run build
+      - name: test
+        run: npm test
 
   floating-dependencies:
     # test using latest allowed dependencies within our semver ranges this is
     # an early warning detection for failures introduced by transitive
     # dependencies
 
-    name: "Floating Dependencies - ${{ matrix.os }}"
-    runs-on: "${{ matrix.os }}-latest"
+    name: 'Floating Dependencies - ${{ matrix.os }}'
+    runs-on: '${{ matrix.os }}-latest'
 
     strategy:
       matrix:
@@ -58,6 +63,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: volta-cli/action@v1
-      - run: npm install --no-package-lock
-      - run: npm run build
-      - run: npm test
+      - name: install dependencies
+        run: npm install --no-package-lock
+      - name: build
+        run: npm run build
+      - name: test
+        run: npm test
