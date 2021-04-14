@@ -12,10 +12,10 @@ const schemaUri = new Map<string, string>([
 export function getSchema(options: SchemaOptions) {
   if (options.schemaName) {
     const schemaName = options.schemaName;
-    const maybeUri = schemaUri.get(schemaName);
+    const uri = schemaUri.get(schemaName);
 
-    if (!schemaCache.has(schemaName) && maybeUri) {
-      const schema = isUrl(maybeUri) ? fetch(maybeUri).json() : require(maybeUri);
+    if (!schemaCache.has(schemaName) && uri) {
+      const schema = fetch(uri).json();
 
       schemaCache.set(schemaName, schema);
     }
@@ -42,13 +42,4 @@ function getFragmentSchema(definitionName: string) {
       }
     ]
   }`);
-}
-
-function isUrl(maybeUrl: string) {
-  try {
-    new URL(maybeUrl);
-    return true;
-  } catch {
-    return false;
-  }
 }
