@@ -94,7 +94,7 @@ export function buildMatcher<T>(options: BuildMatcherOptions): jest.CustomMatche
     const validate = ajv.compile(schema);
     const pass = validate(received) as boolean;
 
-    let message = pass
+    const message = pass
       ? () => {
           let messageToPrint = `${matcherHint(
             `.not.${options.matcherName}`,

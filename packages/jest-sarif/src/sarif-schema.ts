@@ -11,11 +11,11 @@ const schemaUri = new Map<string, string>([
 
 export function getSchema(options: SchemaOptions) {
   if (options.schemaName) {
-    let schemaName = options.schemaName;
-    let maybeUri = schemaUri.get(schemaName);
+    const schemaName = options.schemaName;
+    const maybeUri = schemaUri.get(schemaName);
 
     if (!schemaCache.has(schemaName) && maybeUri) {
-      let schema = isUrl(maybeUri) ? fetch(maybeUri).json() : require(maybeUri);
+      const schema = isUrl(maybeUri) ? fetch(maybeUri).json() : require(maybeUri);
 
       schemaCache.set(schemaName, schema);
     }

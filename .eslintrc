@@ -48,7 +48,8 @@
       {
         "allowModules": ["sarif"]
       }
-    ]
+    ],
+    "prefer-const": "error"
   },
   "overrides": [
     {
