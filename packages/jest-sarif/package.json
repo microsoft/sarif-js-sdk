@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc --build",
+    "prepare": "yarn build",
     "test": "jest"
   },
   "repository": {
