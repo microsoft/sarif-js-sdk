@@ -1,8 +1,6 @@
-import { toMatchSarifLog } from '../../src/matchers/to-match-sarif-log';
-
-expect.extend({
-  toMatchSarifLog,
-});
+// mimics importing from '@microsoft/jest-sarif' and ensures that we're correctly
+// extending Jest's expect.
+import '../../src';
 
 describe('toMatchSarifLog', () => {
   it('does not throw', () => {
