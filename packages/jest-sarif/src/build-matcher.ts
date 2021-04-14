@@ -51,7 +51,7 @@ const formatForPrint = (input: unknown, displayType: boolean = true) => {
   return `${chalk.yellow(`<${typeof input}>`)} ${input}`;
 };
 
-function getValidatorAndSchema(options: BuildMatcherOptions) {
+function getValidatorAndSchema(options: BuildMatcherOptions): [Ajv.Ajv, object | boolean] {
   const ajv = new Ajv({
     schemaId: 'auto',
     validateSchema: false,
