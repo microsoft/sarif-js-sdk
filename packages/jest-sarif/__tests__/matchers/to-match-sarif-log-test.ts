@@ -36,7 +36,7 @@ describe('toMatchSarifLog', () => {
   });
 
   it('fails for matching schema when using .not', () => {
-    let sarifLog = require('../__fixtures__/sarif-log.json');
+    const sarifLog = require('../__fixtures__/sarif-log.json');
 
     expect(() => expect(sarifLog).not.toMatchSarifLog()).toThrow(
       'Expected value not to match schema'
