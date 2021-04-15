@@ -7,7 +7,7 @@ declare global {
   namespace jest {
     interface Matchers<R, T> {
       /**
-       * Asserts that ${value} is an valid SARIF log.
+       * Asserts that actual value is an valid SARIF log.
        * @example
        * expect(value).toMatchSarifLog();
        */
@@ -15,7 +15,7 @@ declare global {
     }
     interface Expect {
       /**
-       * Asserts that ${value} is an `Array` containing only `Boolean` values.
+       * Asserts that actual value is an `Array` containing only `Boolean` values.
        * @example
        * expect(value).toEqual(
        *   expect.toMatchSarifLog()

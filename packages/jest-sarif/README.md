@@ -34,6 +34,8 @@ You can import and use the matchers in one of two ways:
    require('@microsoft/jest-sarif');
    ```
 
+   If you're using TypeScript, you'll want to make your setup file a `.ts` file, and use `import '@microsoft/jest-sarif';` to ensure the type extensions are included.
+
 2. Including one of the following at the top of your test file
 
    ```ts
@@ -98,7 +100,7 @@ it('validates my SARIF result', () => {
 });
 ```
 
-### Typescript
+### TypeScript Definitions
 
 When using typescript in addition to the `buildMatcher` function, the dynamic matchers you build will not immediately be recognized by Jest's matcher types. To resolve this, you can add a one-time definition in a local types file that declares these additional matchers. Using the above `toMatchSarifResult` example, you'd add the following type extension to Jest's Matchers:
 
