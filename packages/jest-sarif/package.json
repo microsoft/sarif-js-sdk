@@ -2,7 +2,8 @@
   "name": "@microsoft/jest-sarif",
   "version": "0.0.1",
   "description": "A collection of jest matchers for working with SARIF",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "scripts": {
     "build": "tsc --build",
     "prepare": "npm run build",
