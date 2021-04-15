@@ -1,0 +1,38 @@
+{
+  "name": "@microsoft/jest-sarif",
+  "version": "0.0.1",
+  "description": "A collection of jest matchers for working with SARIF",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc --build",
+    "prepare": "yarn build",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/microsoft/sarif-js-sdk.git"
+  },
+  "keywords": [
+    "jest",
+    "jest-matcher",
+    "sarif",
+    "jest-sarif"
+  ],
+  "engines": {
+    "node": ">= 12.11.*"
+  },
+  "files": [
+    "/lib"
+  ],
+  "author": "Microsoft Corporation",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/microsoft/sarif-js-sdk/issues"
+  },
+  "homepage": "https://github.com/microsoft/sarif-js-sdk#readme",
+  "dependencies": {
+    "ajv": "^6.12.6",
+    "chalk": "^4.1.0",
+    "sync-fetch": "^0.3.0"
+  }
+}

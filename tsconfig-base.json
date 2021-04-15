@@ -7,13 +7,15 @@
     "importHelpers": true,
     "module": "commonjs",
     "strict": true,
-    "target": "es2020",
+    "target": "es2019",
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "paths": {
+      "@microsoft/jest-sarif": ["./packages/jest-sarif/lib/index.d.ts"],
       "@microsoft/sarif-builder": ["./packages/sarif-builder/lib/index.d.ts"],
       "*": ["./types/*"]
-    }
+    },
+    "types": ["jest", "node"]
   },
   "exclude": ["**/node_modules/**"]
 }

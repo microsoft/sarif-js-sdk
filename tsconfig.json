@@ -1,4 +1,4 @@
 {
   "files": [],
-  "references": [{ "path": "./packages/sarif-builder" }]
+  "references": [{ "path": "./packages/jest-sarif" }, { "path": "./packages/sarif-builder" }]
 }
