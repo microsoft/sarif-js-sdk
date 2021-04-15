@@ -9,7 +9,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc --build",
-    "prepare": "yarn build",
+    "prepare": "npm run build",
     "test": "jest --passWithNoTests"
   },
   "engines": {
