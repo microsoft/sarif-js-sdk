@@ -5,7 +5,7 @@ type MaybeSarifLog = Log | unknown;
 
 declare global {
   namespace jest {
-    interface Matchers<R, T> {
+    interface Matchers<R> {
       /**
        * Asserts that actual value is an valid SARIF log.
        * @example

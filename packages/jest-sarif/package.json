@@ -6,6 +6,7 @@
   "typings": "lib/index.d.ts",
   "scripts": {
     "build": "tsc --build",
+    "generate:definitions": "node ./scripts/generate-definitions.js",
     "prepare": "npm run build",
     "test": "jest"
   },
@@ -35,5 +36,8 @@
     "ajv": "^6.12.6",
     "chalk": "^4.1.0",
     "sync-fetch": "^0.3.0"
+  },
+  "devDependencies": {
+    "prettier": "^2.2.1"
   }
 }
