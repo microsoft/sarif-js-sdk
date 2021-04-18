@@ -1,0 +1,3 @@
+<% matchers.forEach(element => { %>
+export { <%- element.matcherName %> } from './<%- element.matcherPath %>';<% -%>
+<% }) %>

@@ -15,7 +15,7 @@ declare global {
     }
     interface Expect {
       /**
-       * Asserts that actual value is an `Array` containing only `Boolean` values.
+       * Asserts that actual value is an valid SARIF log.
        * @example
        * expect(value).toEqual(
        *   expect.toMatchSarifLog()
