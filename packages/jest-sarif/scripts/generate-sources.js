@@ -26,14 +26,15 @@ function generateDefinitions() {
 }
 
 function generateMatchers() {
-  const matchersIndexExports = [
+  const matchersData = [
     {
       matcherName: 'toMatchSarifLog',
       matcherPath: 'to-match-sarif-log',
     },
   ];
-  const template = getTemplate('to-match-sarif-template');
+  const template = getTemplate('to-match-sarif-template.ts');
 
+  // Generate ./src/matchers/to-match-sarif-<matcherName>.ts
   for (const definition of definitions) {
     const destinationPath = getSourcePath(`to-match-sarif-${kebabCase(definition)}`);
     const type = startCase(camelCase(definition)).replace(/ /g, '');
@@ -48,26 +49,44 @@ function generateMatchers() {
 
     writeFile(destinationPath, renderedMatcher);
 
-    matchersIndexExports.push({
-      matcherName: `toMatchSarif${type}`,
-      matcherPath: `to-match-sarif-${kebabCase(definition)}`,
-    });
+    matchersData.push(
+      Object.assign({}, data, {
+        matcherPath: `to-match-sarif-${kebabCase(definition)}`,
+      })
+    );
   }
 
-  matchersIndexExports.sort();
+  // Generate ./src/matchers/index.ts
+  matchersData.sort();
 
-  const indexTemplate = getTemplate('index');
+  const indexTemplate = getTemplate('index.ts');
 
   const renderedIndex = indexTemplate({
-    matchers: matchersIndexExports,
+    matchers: matchersData,
   });
 
   writeFile(getSourcePath('index'), renderedIndex);
+
+  // Generate README.md matchers docs
+  const readmeTemplate = getTemplate('readme.md');
+
+  const renderedReadme = readmeTemplate({
+    matchers: matchersData,
+  });
+  const readmePath = path.join(__dirname, '..', 'README.md');
+  const readmeContent = fs.readFileSync(readmePath, 'utf8');
+
+  const readmeNewContent = readmeContent.replace(
+    /<!--MATCHERS_START-->[\S\s]*<!--MATCHERS_END-->/,
+    `<!--MATCHERS_START-->\n\n${renderedReadme}\n\n<!--MATCHERS_END-->`
+  );
+
+  writeFile(readmePath, readmeNewContent, { parser: 'markdown' });
 }
 
 function getTemplate(templateName) {
   const templateSource = fs.readFileSync(
-    path.join(__dirname, '..', 'templates', `${templateName}.ts.ejs`),
+    path.join(__dirname, '..', 'templates', `${templateName}.ejs`),
     { encoding: 'utf-8' }
   );
 
@@ -78,9 +97,11 @@ function getSourcePath(fileName) {
   return path.join(__dirname, '..', 'src', 'matchers', `${fileName}.ts`);
 }
 
-function writeFile(filePath, contents) {
+function writeFile(filePath, contents, prettierOptions = {}) {
+  const mergedPrettierOptions = Object.assign({}, { parser: 'babel-ts' }, prettierOptions);
+
   prettier.resolveConfig(filePath).then((options) => {
-    const formatted = prettier.format(contents, Object.assign({}, { parser: 'babel-ts' }, options));
+    const formatted = prettier.format(contents, Object.assign({}, mergedPrettierOptions, options));
 
     fs.writeFileSync(filePath, formatted);
   });

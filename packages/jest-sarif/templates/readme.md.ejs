@@ -1,0 +1,14 @@
+<% matchers.forEach(matcher => { %>
+### `<%- matcher.matcherName %>`
+
+Asserts that a value is an valid SARIF <%- matcher.definition %>.
+
+```ts
+it('validate SARIF <%- matcher.definition %>', () => {
+  const sarif<%- matcher.type %> = buildSarif<%- matcher.type %>();
+
+  expect(sarif<%- matcher.type %>).<%- matcher.matcherName %>();
+});
+```
+
+<% }) %>
