@@ -1,13 +1,13 @@
-import { Log } from 'sarif';
+import * as Sarif from 'sarif';
 import { buildMatcher } from '../build-matcher';
 
-type MaybeSarifLog = Log | unknown;
+type MaybeSarifLog = Sarif.Log | unknown;
 
 declare global {
   namespace jest {
     interface Matchers<R> {
       /**
-       * Asserts that actual value is an valid SARIF log.
+       * Asserts that actual value matches a valid SARIF @type {Sarif.Log}.
        * @example
        * expect(value).toMatchSarifLog();
        */
@@ -15,7 +15,7 @@ declare global {
     }
     interface Expect {
       /**
-       * Asserts that actual value is an valid SARIF log.
+       * Asserts that actual value matches a valid SARIF @type {Sarif.Log}.
        * @example
        * expect(value).toEqual(
        *   expect.toMatchSarifLog()

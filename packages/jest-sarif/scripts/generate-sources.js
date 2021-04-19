@@ -28,6 +28,8 @@ function generateDefinitions() {
 function generateMatchers() {
   const matchersData = [
     {
+      definition: 'log',
+      type: 'Log',
       matcherName: 'toMatchSarifLog',
       matcherPath: 'to-match-sarif-log',
     },

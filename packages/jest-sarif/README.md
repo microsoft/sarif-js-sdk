@@ -54,22 +54,22 @@ You can import and use the matchers in one of two ways:
 
 ### `toMatchSarifLog`
 
-Asserts that a value is an valid SARIF .
+Asserts that a value matches a valid SARIF log.
 
 ```ts
-it('validate SARIF ', () => {
-  const sarif = buildSarif();
+it('should match SARIF log', () => {
+  const sarifLog = buildSarifLog();
 
-  expect(sarif).toMatchSarifLog();
+  expect(sarifLog).toMatchSarifLog();
 });
 ```
 
 ### `toMatchSarifAddress`
 
-Asserts that a value is an valid SARIF address.
+Asserts that a value matches a valid SARIF address.
 
 ```ts
-it('validate SARIF address', () => {
+it('should match SARIF address', () => {
   const sarifAddress = buildSarifAddress();
 
   expect(sarifAddress).toMatchSarifAddress();
@@ -78,10 +78,10 @@ it('validate SARIF address', () => {
 
 ### `toMatchSarifArtifact`
 
-Asserts that a value is an valid SARIF artifact.
+Asserts that a value matches a valid SARIF artifact.
 
 ```ts
-it('validate SARIF artifact', () => {
+it('should match SARIF artifact', () => {
   const sarifArtifact = buildSarifArtifact();
 
   expect(sarifArtifact).toMatchSarifArtifact();
@@ -90,10 +90,10 @@ it('validate SARIF artifact', () => {
 
 ### `toMatchSarifArtifactChange`
 
-Asserts that a value is an valid SARIF artifactChange.
+Asserts that a value matches a valid SARIF artifactChange.
 
 ```ts
-it('validate SARIF artifactChange', () => {
+it('should match SARIF artifactChange', () => {
   const sarifArtifactChange = buildSarifArtifactChange();
 
   expect(sarifArtifactChange).toMatchSarifArtifactChange();
@@ -102,10 +102,10 @@ it('validate SARIF artifactChange', () => {
 
 ### `toMatchSarifArtifactContent`
 
-Asserts that a value is an valid SARIF artifactContent.
+Asserts that a value matches a valid SARIF artifactContent.
 
 ```ts
-it('validate SARIF artifactContent', () => {
+it('should match SARIF artifactContent', () => {
   const sarifArtifactContent = buildSarifArtifactContent();
 
   expect(sarifArtifactContent).toMatchSarifArtifactContent();
@@ -114,10 +114,10 @@ it('validate SARIF artifactContent', () => {
 
 ### `toMatchSarifArtifactLocation`
 
-Asserts that a value is an valid SARIF artifactLocation.
+Asserts that a value matches a valid SARIF artifactLocation.
 
 ```ts
-it('validate SARIF artifactLocation', () => {
+it('should match SARIF artifactLocation', () => {
   const sarifArtifactLocation = buildSarifArtifactLocation();
 
   expect(sarifArtifactLocation).toMatchSarifArtifactLocation();
@@ -126,10 +126,10 @@ it('validate SARIF artifactLocation', () => {
 
 ### `toMatchSarifAttachment`
 
-Asserts that a value is an valid SARIF attachment.
+Asserts that a value matches a valid SARIF attachment.
 
 ```ts
-it('validate SARIF attachment', () => {
+it('should match SARIF attachment', () => {
   const sarifAttachment = buildSarifAttachment();
 
   expect(sarifAttachment).toMatchSarifAttachment();
@@ -138,10 +138,10 @@ it('validate SARIF attachment', () => {
 
 ### `toMatchSarifCodeFlow`
 
-Asserts that a value is an valid SARIF codeFlow.
+Asserts that a value matches a valid SARIF codeFlow.
 
 ```ts
-it('validate SARIF codeFlow', () => {
+it('should match SARIF codeFlow', () => {
   const sarifCodeFlow = buildSarifCodeFlow();
 
   expect(sarifCodeFlow).toMatchSarifCodeFlow();
@@ -150,10 +150,10 @@ it('validate SARIF codeFlow', () => {
 
 ### `toMatchSarifConfigurationOverride`
 
-Asserts that a value is an valid SARIF configurationOverride.
+Asserts that a value matches a valid SARIF configurationOverride.
 
 ```ts
-it('validate SARIF configurationOverride', () => {
+it('should match SARIF configurationOverride', () => {
   const sarifConfigurationOverride = buildSarifConfigurationOverride();
 
   expect(sarifConfigurationOverride).toMatchSarifConfigurationOverride();
@@ -162,10 +162,10 @@ it('validate SARIF configurationOverride', () => {
 
 ### `toMatchSarifConversion`
 
-Asserts that a value is an valid SARIF conversion.
+Asserts that a value matches a valid SARIF conversion.
 
 ```ts
-it('validate SARIF conversion', () => {
+it('should match SARIF conversion', () => {
   const sarifConversion = buildSarifConversion();
 
   expect(sarifConversion).toMatchSarifConversion();
@@ -174,10 +174,10 @@ it('validate SARIF conversion', () => {
 
 ### `toMatchSarifEdge`
 
-Asserts that a value is an valid SARIF edge.
+Asserts that a value matches a valid SARIF edge.
 
 ```ts
-it('validate SARIF edge', () => {
+it('should match SARIF edge', () => {
   const sarifEdge = buildSarifEdge();
 
   expect(sarifEdge).toMatchSarifEdge();
@@ -186,10 +186,10 @@ it('validate SARIF edge', () => {
 
 ### `toMatchSarifEdgeTraversal`
 
-Asserts that a value is an valid SARIF edgeTraversal.
+Asserts that a value matches a valid SARIF edgeTraversal.
 
 ```ts
-it('validate SARIF edgeTraversal', () => {
+it('should match SARIF edgeTraversal', () => {
   const sarifEdgeTraversal = buildSarifEdgeTraversal();
 
   expect(sarifEdgeTraversal).toMatchSarifEdgeTraversal();
@@ -198,10 +198,10 @@ it('validate SARIF edgeTraversal', () => {
 
 ### `toMatchSarifException`
 
-Asserts that a value is an valid SARIF exception.
+Asserts that a value matches a valid SARIF exception.
 
 ```ts
-it('validate SARIF exception', () => {
+it('should match SARIF exception', () => {
   const sarifException = buildSarifException();
 
   expect(sarifException).toMatchSarifException();
@@ -210,10 +210,10 @@ it('validate SARIF exception', () => {
 
 ### `toMatchSarifExternalProperties`
 
-Asserts that a value is an valid SARIF externalProperties.
+Asserts that a value matches a valid SARIF externalProperties.
 
 ```ts
-it('validate SARIF externalProperties', () => {
+it('should match SARIF externalProperties', () => {
   const sarifExternalProperties = buildSarifExternalProperties();
 
   expect(sarifExternalProperties).toMatchSarifExternalProperties();
@@ -222,10 +222,10 @@ it('validate SARIF externalProperties', () => {
 
 ### `toMatchSarifExternalPropertyFileReference`
 
-Asserts that a value is an valid SARIF externalPropertyFileReference.
+Asserts that a value matches a valid SARIF externalPropertyFileReference.
 
 ```ts
-it('validate SARIF externalPropertyFileReference', () => {
+it('should match SARIF externalPropertyFileReference', () => {
   const sarifExternalPropertyFileReference = buildSarifExternalPropertyFileReference();
 
   expect(sarifExternalPropertyFileReference).toMatchSarifExternalPropertyFileReference();
@@ -234,10 +234,10 @@ it('validate SARIF externalPropertyFileReference', () => {
 
 ### `toMatchSarifExternalPropertyFileReferences`
 
-Asserts that a value is an valid SARIF externalPropertyFileReferences.
+Asserts that a value matches a valid SARIF externalPropertyFileReferences.
 
 ```ts
-it('validate SARIF externalPropertyFileReferences', () => {
+it('should match SARIF externalPropertyFileReferences', () => {
   const sarifExternalPropertyFileReferences = buildSarifExternalPropertyFileReferences();
 
   expect(sarifExternalPropertyFileReferences).toMatchSarifExternalPropertyFileReferences();
@@ -246,10 +246,10 @@ it('validate SARIF externalPropertyFileReferences', () => {
 
 ### `toMatchSarifFix`
 
-Asserts that a value is an valid SARIF fix.
+Asserts that a value matches a valid SARIF fix.
 
 ```ts
-it('validate SARIF fix', () => {
+it('should match SARIF fix', () => {
   const sarifFix = buildSarifFix();
 
   expect(sarifFix).toMatchSarifFix();
@@ -258,10 +258,10 @@ it('validate SARIF fix', () => {
 
 ### `toMatchSarifGraph`
 
-Asserts that a value is an valid SARIF graph.
+Asserts that a value matches a valid SARIF graph.
 
 ```ts
-it('validate SARIF graph', () => {
+it('should match SARIF graph', () => {
   const sarifGraph = buildSarifGraph();
 
   expect(sarifGraph).toMatchSarifGraph();
@@ -270,10 +270,10 @@ it('validate SARIF graph', () => {
 
 ### `toMatchSarifGraphTraversal`
 
-Asserts that a value is an valid SARIF graphTraversal.
+Asserts that a value matches a valid SARIF graphTraversal.
 
 ```ts
-it('validate SARIF graphTraversal', () => {
+it('should match SARIF graphTraversal', () => {
   const sarifGraphTraversal = buildSarifGraphTraversal();
 
   expect(sarifGraphTraversal).toMatchSarifGraphTraversal();
@@ -282,10 +282,10 @@ it('validate SARIF graphTraversal', () => {
 
 ### `toMatchSarifInvocation`
 
-Asserts that a value is an valid SARIF invocation.
+Asserts that a value matches a valid SARIF invocation.
 
 ```ts
-it('validate SARIF invocation', () => {
+it('should match SARIF invocation', () => {
   const sarifInvocation = buildSarifInvocation();
 
   expect(sarifInvocation).toMatchSarifInvocation();
@@ -294,10 +294,10 @@ it('validate SARIF invocation', () => {
 
 ### `toMatchSarifLocation`
 
-Asserts that a value is an valid SARIF location.
+Asserts that a value matches a valid SARIF location.
 
 ```ts
-it('validate SARIF location', () => {
+it('should match SARIF location', () => {
   const sarifLocation = buildSarifLocation();
 
   expect(sarifLocation).toMatchSarifLocation();
@@ -306,10 +306,10 @@ it('validate SARIF location', () => {
 
 ### `toMatchSarifLocationRelationship`
 
-Asserts that a value is an valid SARIF locationRelationship.
+Asserts that a value matches a valid SARIF locationRelationship.
 
 ```ts
-it('validate SARIF locationRelationship', () => {
+it('should match SARIF locationRelationship', () => {
   const sarifLocationRelationship = buildSarifLocationRelationship();
 
   expect(sarifLocationRelationship).toMatchSarifLocationRelationship();
@@ -318,10 +318,10 @@ it('validate SARIF locationRelationship', () => {
 
 ### `toMatchSarifLogicalLocation`
 
-Asserts that a value is an valid SARIF logicalLocation.
+Asserts that a value matches a valid SARIF logicalLocation.
 
 ```ts
-it('validate SARIF logicalLocation', () => {
+it('should match SARIF logicalLocation', () => {
   const sarifLogicalLocation = buildSarifLogicalLocation();
 
   expect(sarifLogicalLocation).toMatchSarifLogicalLocation();
@@ -330,10 +330,10 @@ it('validate SARIF logicalLocation', () => {
 
 ### `toMatchSarifMessage`
 
-Asserts that a value is an valid SARIF message.
+Asserts that a value matches a valid SARIF message.
 
 ```ts
-it('validate SARIF message', () => {
+it('should match SARIF message', () => {
   const sarifMessage = buildSarifMessage();
 
   expect(sarifMessage).toMatchSarifMessage();
@@ -342,10 +342,10 @@ it('validate SARIF message', () => {
 
 ### `toMatchSarifMultiformatMessageString`
 
-Asserts that a value is an valid SARIF multiformatMessageString.
+Asserts that a value matches a valid SARIF multiformatMessageString.
 
 ```ts
-it('validate SARIF multiformatMessageString', () => {
+it('should match SARIF multiformatMessageString', () => {
   const sarifMultiformatMessageString = buildSarifMultiformatMessageString();
 
   expect(sarifMultiformatMessageString).toMatchSarifMultiformatMessageString();
@@ -354,10 +354,10 @@ it('validate SARIF multiformatMessageString', () => {
 
 ### `toMatchSarifNode`
 
-Asserts that a value is an valid SARIF node.
+Asserts that a value matches a valid SARIF node.
 
 ```ts
-it('validate SARIF node', () => {
+it('should match SARIF node', () => {
   const sarifNode = buildSarifNode();
 
   expect(sarifNode).toMatchSarifNode();
@@ -366,10 +366,10 @@ it('validate SARIF node', () => {
 
 ### `toMatchSarifNotification`
 
-Asserts that a value is an valid SARIF notification.
+Asserts that a value matches a valid SARIF notification.
 
 ```ts
-it('validate SARIF notification', () => {
+it('should match SARIF notification', () => {
   const sarifNotification = buildSarifNotification();
 
   expect(sarifNotification).toMatchSarifNotification();
@@ -378,10 +378,10 @@ it('validate SARIF notification', () => {
 
 ### `toMatchSarifPhysicalLocation`
 
-Asserts that a value is an valid SARIF physicalLocation.
+Asserts that a value matches a valid SARIF physicalLocation.
 
 ```ts
-it('validate SARIF physicalLocation', () => {
+it('should match SARIF physicalLocation', () => {
   const sarifPhysicalLocation = buildSarifPhysicalLocation();
 
   expect(sarifPhysicalLocation).toMatchSarifPhysicalLocation();
@@ -390,10 +390,10 @@ it('validate SARIF physicalLocation', () => {
 
 ### `toMatchSarifPropertyBag`
 
-Asserts that a value is an valid SARIF propertyBag.
+Asserts that a value matches a valid SARIF propertyBag.
 
 ```ts
-it('validate SARIF propertyBag', () => {
+it('should match SARIF propertyBag', () => {
   const sarifPropertyBag = buildSarifPropertyBag();
 
   expect(sarifPropertyBag).toMatchSarifPropertyBag();
@@ -402,10 +402,10 @@ it('validate SARIF propertyBag', () => {
 
 ### `toMatchSarifRectangle`
 
-Asserts that a value is an valid SARIF rectangle.
+Asserts that a value matches a valid SARIF rectangle.
 
 ```ts
-it('validate SARIF rectangle', () => {
+it('should match SARIF rectangle', () => {
   const sarifRectangle = buildSarifRectangle();
 
   expect(sarifRectangle).toMatchSarifRectangle();
@@ -414,10 +414,10 @@ it('validate SARIF rectangle', () => {
 
 ### `toMatchSarifRegion`
 
-Asserts that a value is an valid SARIF region.
+Asserts that a value matches a valid SARIF region.
 
 ```ts
-it('validate SARIF region', () => {
+it('should match SARIF region', () => {
   const sarifRegion = buildSarifRegion();
 
   expect(sarifRegion).toMatchSarifRegion();
@@ -426,10 +426,10 @@ it('validate SARIF region', () => {
 
 ### `toMatchSarifReplacement`
 
-Asserts that a value is an valid SARIF replacement.
+Asserts that a value matches a valid SARIF replacement.
 
 ```ts
-it('validate SARIF replacement', () => {
+it('should match SARIF replacement', () => {
   const sarifReplacement = buildSarifReplacement();
 
   expect(sarifReplacement).toMatchSarifReplacement();
@@ -438,10 +438,10 @@ it('validate SARIF replacement', () => {
 
 ### `toMatchSarifReportingDescriptor`
 
-Asserts that a value is an valid SARIF reportingDescriptor.
+Asserts that a value matches a valid SARIF reportingDescriptor.
 
 ```ts
-it('validate SARIF reportingDescriptor', () => {
+it('should match SARIF reportingDescriptor', () => {
   const sarifReportingDescriptor = buildSarifReportingDescriptor();
 
   expect(sarifReportingDescriptor).toMatchSarifReportingDescriptor();
@@ -450,10 +450,10 @@ it('validate SARIF reportingDescriptor', () => {
 
 ### `toMatchSarifReportingConfiguration`
 
-Asserts that a value is an valid SARIF reportingConfiguration.
+Asserts that a value matches a valid SARIF reportingConfiguration.
 
 ```ts
-it('validate SARIF reportingConfiguration', () => {
+it('should match SARIF reportingConfiguration', () => {
   const sarifReportingConfiguration = buildSarifReportingConfiguration();
 
   expect(sarifReportingConfiguration).toMatchSarifReportingConfiguration();
@@ -462,10 +462,10 @@ it('validate SARIF reportingConfiguration', () => {
 
 ### `toMatchSarifReportingDescriptorReference`
 
-Asserts that a value is an valid SARIF reportingDescriptorReference.
+Asserts that a value matches a valid SARIF reportingDescriptorReference.
 
 ```ts
-it('validate SARIF reportingDescriptorReference', () => {
+it('should match SARIF reportingDescriptorReference', () => {
   const sarifReportingDescriptorReference = buildSarifReportingDescriptorReference();
 
   expect(sarifReportingDescriptorReference).toMatchSarifReportingDescriptorReference();
@@ -474,10 +474,10 @@ it('validate SARIF reportingDescriptorReference', () => {
 
 ### `toMatchSarifReportingDescriptorRelationship`
 
-Asserts that a value is an valid SARIF reportingDescriptorRelationship.
+Asserts that a value matches a valid SARIF reportingDescriptorRelationship.
 
 ```ts
-it('validate SARIF reportingDescriptorRelationship', () => {
+it('should match SARIF reportingDescriptorRelationship', () => {
   const sarifReportingDescriptorRelationship = buildSarifReportingDescriptorRelationship();
 
   expect(sarifReportingDescriptorRelationship).toMatchSarifReportingDescriptorRelationship();
@@ -486,10 +486,10 @@ it('validate SARIF reportingDescriptorRelationship', () => {
 
 ### `toMatchSarifResult`
 
-Asserts that a value is an valid SARIF result.
+Asserts that a value matches a valid SARIF result.
 
 ```ts
-it('validate SARIF result', () => {
+it('should match SARIF result', () => {
   const sarifResult = buildSarifResult();
 
   expect(sarifResult).toMatchSarifResult();
@@ -498,10 +498,10 @@ it('validate SARIF result', () => {
 
 ### `toMatchSarifResultProvenance`
 
-Asserts that a value is an valid SARIF resultProvenance.
+Asserts that a value matches a valid SARIF resultProvenance.
 
 ```ts
-it('validate SARIF resultProvenance', () => {
+it('should match SARIF resultProvenance', () => {
   const sarifResultProvenance = buildSarifResultProvenance();
 
   expect(sarifResultProvenance).toMatchSarifResultProvenance();
@@ -510,10 +510,10 @@ it('validate SARIF resultProvenance', () => {
 
 ### `toMatchSarifRun`
 
-Asserts that a value is an valid SARIF run.
+Asserts that a value matches a valid SARIF run.
 
 ```ts
-it('validate SARIF run', () => {
+it('should match SARIF run', () => {
   const sarifRun = buildSarifRun();
 
   expect(sarifRun).toMatchSarifRun();
@@ -522,10 +522,10 @@ it('validate SARIF run', () => {
 
 ### `toMatchSarifRunAutomationDetails`
 
-Asserts that a value is an valid SARIF runAutomationDetails.
+Asserts that a value matches a valid SARIF runAutomationDetails.
 
 ```ts
-it('validate SARIF runAutomationDetails', () => {
+it('should match SARIF runAutomationDetails', () => {
   const sarifRunAutomationDetails = buildSarifRunAutomationDetails();
 
   expect(sarifRunAutomationDetails).toMatchSarifRunAutomationDetails();
@@ -534,10 +534,10 @@ it('validate SARIF runAutomationDetails', () => {
 
 ### `toMatchSarifSpecialLocations`
 
-Asserts that a value is an valid SARIF specialLocations.
+Asserts that a value matches a valid SARIF specialLocations.
 
 ```ts
-it('validate SARIF specialLocations', () => {
+it('should match SARIF specialLocations', () => {
   const sarifSpecialLocations = buildSarifSpecialLocations();
 
   expect(sarifSpecialLocations).toMatchSarifSpecialLocations();
@@ -546,10 +546,10 @@ it('validate SARIF specialLocations', () => {
 
 ### `toMatchSarifStack`
 
-Asserts that a value is an valid SARIF stack.
+Asserts that a value matches a valid SARIF stack.
 
 ```ts
-it('validate SARIF stack', () => {
+it('should match SARIF stack', () => {
   const sarifStack = buildSarifStack();
 
   expect(sarifStack).toMatchSarifStack();
@@ -558,10 +558,10 @@ it('validate SARIF stack', () => {
 
 ### `toMatchSarifStackFrame`
 
-Asserts that a value is an valid SARIF stackFrame.
+Asserts that a value matches a valid SARIF stackFrame.
 
 ```ts
-it('validate SARIF stackFrame', () => {
+it('should match SARIF stackFrame', () => {
   const sarifStackFrame = buildSarifStackFrame();
 
   expect(sarifStackFrame).toMatchSarifStackFrame();
@@ -570,10 +570,10 @@ it('validate SARIF stackFrame', () => {
 
 ### `toMatchSarifSuppression`
 
-Asserts that a value is an valid SARIF suppression.
+Asserts that a value matches a valid SARIF suppression.
 
 ```ts
-it('validate SARIF suppression', () => {
+it('should match SARIF suppression', () => {
   const sarifSuppression = buildSarifSuppression();
 
   expect(sarifSuppression).toMatchSarifSuppression();
@@ -582,10 +582,10 @@ it('validate SARIF suppression', () => {
 
 ### `toMatchSarifThreadFlow`
 
-Asserts that a value is an valid SARIF threadFlow.
+Asserts that a value matches a valid SARIF threadFlow.
 
 ```ts
-it('validate SARIF threadFlow', () => {
+it('should match SARIF threadFlow', () => {
   const sarifThreadFlow = buildSarifThreadFlow();
 
   expect(sarifThreadFlow).toMatchSarifThreadFlow();
@@ -594,10 +594,10 @@ it('validate SARIF threadFlow', () => {
 
 ### `toMatchSarifThreadFlowLocation`
 
-Asserts that a value is an valid SARIF threadFlowLocation.
+Asserts that a value matches a valid SARIF threadFlowLocation.
 
 ```ts
-it('validate SARIF threadFlowLocation', () => {
+it('should match SARIF threadFlowLocation', () => {
   const sarifThreadFlowLocation = buildSarifThreadFlowLocation();
 
   expect(sarifThreadFlowLocation).toMatchSarifThreadFlowLocation();
@@ -606,10 +606,10 @@ it('validate SARIF threadFlowLocation', () => {
 
 ### `toMatchSarifTool`
 
-Asserts that a value is an valid SARIF tool.
+Asserts that a value matches a valid SARIF tool.
 
 ```ts
-it('validate SARIF tool', () => {
+it('should match SARIF tool', () => {
   const sarifTool = buildSarifTool();
 
   expect(sarifTool).toMatchSarifTool();
@@ -618,10 +618,10 @@ it('validate SARIF tool', () => {
 
 ### `toMatchSarifToolComponent`
 
-Asserts that a value is an valid SARIF toolComponent.
+Asserts that a value matches a valid SARIF toolComponent.
 
 ```ts
-it('validate SARIF toolComponent', () => {
+it('should match SARIF toolComponent', () => {
   const sarifToolComponent = buildSarifToolComponent();
 
   expect(sarifToolComponent).toMatchSarifToolComponent();
@@ -630,10 +630,10 @@ it('validate SARIF toolComponent', () => {
 
 ### `toMatchSarifToolComponentReference`
 
-Asserts that a value is an valid SARIF toolComponentReference.
+Asserts that a value matches a valid SARIF toolComponentReference.
 
 ```ts
-it('validate SARIF toolComponentReference', () => {
+it('should match SARIF toolComponentReference', () => {
   const sarifToolComponentReference = buildSarifToolComponentReference();
 
   expect(sarifToolComponentReference).toMatchSarifToolComponentReference();
@@ -642,10 +642,10 @@ it('validate SARIF toolComponentReference', () => {
 
 ### `toMatchSarifTranslationMetadata`
 
-Asserts that a value is an valid SARIF translationMetadata.
+Asserts that a value matches a valid SARIF translationMetadata.
 
 ```ts
-it('validate SARIF translationMetadata', () => {
+it('should match SARIF translationMetadata', () => {
   const sarifTranslationMetadata = buildSarifTranslationMetadata();
 
   expect(sarifTranslationMetadata).toMatchSarifTranslationMetadata();
@@ -654,10 +654,10 @@ it('validate SARIF translationMetadata', () => {
 
 ### `toMatchSarifVersionControlDetails`
 
-Asserts that a value is an valid SARIF versionControlDetails.
+Asserts that a value matches a valid SARIF versionControlDetails.
 
 ```ts
-it('validate SARIF versionControlDetails', () => {
+it('should match SARIF versionControlDetails', () => {
   const sarifVersionControlDetails = buildSarifVersionControlDetails();
 
   expect(sarifVersionControlDetails).toMatchSarifVersionControlDetails();
@@ -666,10 +666,10 @@ it('validate SARIF versionControlDetails', () => {
 
 ### `toMatchSarifWebRequest`
 
-Asserts that a value is an valid SARIF webRequest.
+Asserts that a value matches a valid SARIF webRequest.
 
 ```ts
-it('validate SARIF webRequest', () => {
+it('should match SARIF webRequest', () => {
   const sarifWebRequest = buildSarifWebRequest();
 
   expect(sarifWebRequest).toMatchSarifWebRequest();
@@ -678,10 +678,10 @@ it('validate SARIF webRequest', () => {
 
 ### `toMatchSarifWebResponse`
 
-Asserts that a value is an valid SARIF webResponse.
+Asserts that a value matches a valid SARIF webResponse.
 
 ```ts
-it('validate SARIF webResponse', () => {
+it('should match SARIF webResponse', () => {
   const sarifWebResponse = buildSarifWebResponse();
 
   expect(sarifWebResponse).toMatchSarifWebResponse();
@@ -689,65 +689,6 @@ it('validate SARIF webResponse', () => {
 ```
 
 <!--MATCHERS_END-->
-
-## Building Custom Matchers for SARIF Schema Fragments
-
-You can also build your own matcher that will match a fragment of the SARIF schema. This is useful when you want to match a part of the schema, such as a `Result` object.
-
-This is useful for tools and/or libraries that build SARIF logs incrementally, and want to validate each portion of the log generation as they compose the full log.
-
-:warning: Note - this will only work for properties defined in the `definitions` section of the SARIF schema, as these are definitions that can be referenced through other schemas.
-
-Example:
-
-The following builds a matcher to match SARIF [Result objects](https://docs.oasis-open.org/sarif/sarif/v2.1.0/csprd01/sarif-v2.1.0-csprd01.html#_Toc10541076).
-
-```ts
-// jest-setup.js
-const { buildMatcher } = require('@microsoft/jest-sarif');
-
-const toMatchSarifResult = buildMatcher({
-  matcherName: 'toMatchSarifResult',
-  definitionName: 'result',
-});
-
-expect.extend({
-  toMatchSarifResult,
-});
-```
-
-This creates a new schema validator that uses JSON pointers to reference specific SARIF Schema definitions. This is what allows us to generate portions of the schema dynamically, while ensuring the generated schemas adhere to the original.
-
-To use in tests, call it as you would other Jest matchers:
-
-```ts
-it('validates my SARIF result', () => {
-  const result = buildSarifResult();
-
-  expect(result).toMatchSarifResult();
-});
-```
-
-### TypeScript Definitions
-
-When using typescript in addition to the `buildMatcher` function, the dynamic matchers you build will not immediately be recognized by Jest's matcher types. To resolve this, you can add a one-time definition in a local types file that declares these additional matchers. Using the above `toMatchSarifResult` example, you'd add the following type extension to Jest's Matchers:
-
-```ts
-// types/jest-matchers.d.ts
-
-declare global {
-  namespace jest {
-    interface Matchers<R> {
-      toMatchSarifResult(): R;
-      // other dynamic matchers
-    }
-    interface Expect {
-      toMatchSarifResult<T>(): jest.JestMatchers<T>;
-      // other dynamic matchers
-    }
-  }
-}
-```
 
 ## Attribution
 
