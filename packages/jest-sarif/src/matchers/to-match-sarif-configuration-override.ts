@@ -29,7 +29,7 @@ declare global {
 
 export const toMatchSarifConfigurationOverride = buildMatcher<MaybeConfigurationOverride>({
   matcherName: 'toMatchSarifConfigurationOverride',
-  definitionName: 'configurationOverride',
+  definition: 'configurationOverride',
 });
 
 expect.extend({ toMatchSarifConfigurationOverride });

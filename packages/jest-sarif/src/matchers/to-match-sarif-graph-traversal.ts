@@ -29,7 +29,7 @@ declare global {
 
 export const toMatchSarifGraphTraversal = buildMatcher<MaybeGraphTraversal>({
   matcherName: 'toMatchSarifGraphTraversal',
-  definitionName: 'graphTraversal',
+  definition: 'graphTraversal',
 });
 
 expect.extend({ toMatchSarifGraphTraversal });

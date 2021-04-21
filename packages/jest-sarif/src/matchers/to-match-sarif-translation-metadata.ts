@@ -29,7 +29,7 @@ declare global {
 
 export const toMatchSarifTranslationMetadata = buildMatcher<MaybeTranslationMetadata>({
   matcherName: 'toMatchSarifTranslationMetadata',
-  definitionName: 'translationMetadata',
+  definition: 'translationMetadata',
 });
 
 expect.extend({ toMatchSarifTranslationMetadata });

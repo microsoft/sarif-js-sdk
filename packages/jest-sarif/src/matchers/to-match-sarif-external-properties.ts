@@ -29,7 +29,7 @@ declare global {
 
 export const toMatchSarifExternalProperties = buildMatcher<MaybeExternalProperties>({
   matcherName: 'toMatchSarifExternalProperties',
-  definitionName: 'externalProperties',
+  definition: 'externalProperties',
 });
 
 expect.extend({ toMatchSarifExternalProperties });

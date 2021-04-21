@@ -29,7 +29,7 @@ declare global {
 
 export const toMatchSarifPropertyBag = buildMatcher<MaybePropertyBag>({
   matcherName: 'toMatchSarifPropertyBag',
-  definitionName: 'propertyBag',
+  definition: 'propertyBag',
 });
 
 expect.extend({ toMatchSarifPropertyBag });

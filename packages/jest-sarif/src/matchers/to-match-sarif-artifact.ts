@@ -29,7 +29,7 @@ declare global {
 
 export const toMatchSarifArtifact = buildMatcher<MaybeArtifact>({
   matcherName: 'toMatchSarifArtifact',
-  definitionName: 'artifact',
+  definition: 'artifact',
 });
 
 expect.extend({ toMatchSarifArtifact });

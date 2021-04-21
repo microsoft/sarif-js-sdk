@@ -29,7 +29,7 @@ declare global {
 
 export const toMatchSarifEdge = buildMatcher<MaybeEdge>({
   matcherName: 'toMatchSarifEdge',
-  definitionName: 'edge',
+  definition: 'edge',
 });
 
 expect.extend({ toMatchSarifEdge });

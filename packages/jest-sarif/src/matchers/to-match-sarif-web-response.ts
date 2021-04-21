@@ -29,7 +29,7 @@ declare global {
 
 export const toMatchSarifWebResponse = buildMatcher<MaybeWebResponse>({
   matcherName: 'toMatchSarifWebResponse',
-  definitionName: 'webResponse',
+  definition: 'webResponse',
 });
 
 expect.extend({ toMatchSarifWebResponse });

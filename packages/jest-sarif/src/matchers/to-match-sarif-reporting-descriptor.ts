@@ -29,7 +29,7 @@ declare global {
 
 export const toMatchSarifReportingDescriptor = buildMatcher<MaybeReportingDescriptor>({
   matcherName: 'toMatchSarifReportingDescriptor',
-  definitionName: 'reportingDescriptor',
+  definition: 'reportingDescriptor',
 });
 
 expect.extend({ toMatchSarifReportingDescriptor });

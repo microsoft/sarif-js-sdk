@@ -29,7 +29,7 @@ declare global {
 
 export const toMatchSarifException = buildMatcher<MaybeException>({
   matcherName: 'toMatchSarifException',
-  definitionName: 'exception',
+  definition: 'exception',
 });
 
 expect.extend({ toMatchSarifException });

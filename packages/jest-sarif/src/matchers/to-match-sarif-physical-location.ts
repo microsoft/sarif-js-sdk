@@ -29,7 +29,7 @@ declare global {
 
 export const toMatchSarifPhysicalLocation = buildMatcher<MaybePhysicalLocation>({
   matcherName: 'toMatchSarifPhysicalLocation',
-  definitionName: 'physicalLocation',
+  definition: 'physicalLocation',
 });
 
 expect.extend({ toMatchSarifPhysicalLocation });

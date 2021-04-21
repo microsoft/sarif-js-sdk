@@ -29,7 +29,7 @@ declare global {
 
 export const toMatchSarifRunAutomationDetails = buildMatcher<MaybeRunAutomationDetails>({
   matcherName: 'toMatchSarifRunAutomationDetails',
-  definitionName: 'runAutomationDetails',
+  definition: 'runAutomationDetails',
 });
 
 expect.extend({ toMatchSarifRunAutomationDetails });

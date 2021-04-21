@@ -29,7 +29,7 @@ declare global {
 
 export const toMatchSarifMultiformatMessageString = buildMatcher<MaybeMultiformatMessageString>({
   matcherName: 'toMatchSarifMultiformatMessageString',
-  definitionName: 'multiformatMessageString',
+  definition: 'multiformatMessageString',
 });
 
 expect.extend({ toMatchSarifMultiformatMessageString });

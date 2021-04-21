@@ -1,23 +1,4 @@
-import { Result } from 'sarif';
-import { buildMatcher } from '../../src/build-matcher';
-
-expect.extend({
-  toMatchSarifResult: buildMatcher<Result | unknown>({
-    matcherName: 'toMatchSarifResult',
-    definitionName: 'result',
-  }),
-});
-
-declare global {
-  namespace jest {
-    interface Matchers<R> {
-      toMatchSarifResult(): R;
-    }
-    interface Expect {
-      toMatchSarifResult<T>(): jest.JestMatchers<T>;
-    }
-  }
-}
+import '../../src';
 
 describe('toMatchSarifResult', () => {
   it('does not throw', () => {

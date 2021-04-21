@@ -29,7 +29,7 @@ declare global {
 
 export const toMatchSarifAttachment = buildMatcher<MaybeAttachment>({
   matcherName: 'toMatchSarifAttachment',
-  definitionName: 'attachment',
+  definition: 'attachment',
 });
 
 expect.extend({ toMatchSarifAttachment });

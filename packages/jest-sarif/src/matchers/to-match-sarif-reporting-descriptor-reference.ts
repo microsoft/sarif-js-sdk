@@ -30,7 +30,7 @@ declare global {
 export const toMatchSarifReportingDescriptorReference = buildMatcher<MaybeReportingDescriptorReference>(
   {
     matcherName: 'toMatchSarifReportingDescriptorReference',
-    definitionName: 'reportingDescriptorReference',
+    definition: 'reportingDescriptorReference',
   }
 );
 

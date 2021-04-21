@@ -29,7 +29,7 @@ declare global {
 
 export const <%- matcherName %> = buildMatcher<<%- maybeType %>>({
   matcherName: '<%- matcherName %>',
-  definitionName: '<%- definition %>',
+  definition: '<%- definition %>',
 });
 
 expect.extend({ <%- matcherName %> });

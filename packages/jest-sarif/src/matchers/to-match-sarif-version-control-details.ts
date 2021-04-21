@@ -29,7 +29,7 @@ declare global {
 
 export const toMatchSarifVersionControlDetails = buildMatcher<MaybeVersionControlDetails>({
   matcherName: 'toMatchSarifVersionControlDetails',
-  definitionName: 'versionControlDetails',
+  definition: 'versionControlDetails',
 });
 
 expect.extend({ toMatchSarifVersionControlDetails });

@@ -29,7 +29,7 @@ declare global {
 
 export const toMatchSarifRectangle = buildMatcher<MaybeRectangle>({
   matcherName: 'toMatchSarifRectangle',
-  definitionName: 'rectangle',
+  definition: 'rectangle',
 });
 
 expect.extend({ toMatchSarifRectangle });

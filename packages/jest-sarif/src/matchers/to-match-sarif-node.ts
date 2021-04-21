@@ -29,7 +29,7 @@ declare global {
 
 export const toMatchSarifNode = buildMatcher<MaybeNode>({
   matcherName: 'toMatchSarifNode',
-  definitionName: 'node',
+  definition: 'node',
 });
 
 expect.extend({ toMatchSarifNode });

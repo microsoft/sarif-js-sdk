@@ -29,7 +29,7 @@ declare global {
 
 export const toMatchSarifRegion = buildMatcher<MaybeRegion>({
   matcherName: 'toMatchSarifRegion',
-  definitionName: 'region',
+  definition: 'region',
 });
 
 expect.extend({ toMatchSarifRegion });

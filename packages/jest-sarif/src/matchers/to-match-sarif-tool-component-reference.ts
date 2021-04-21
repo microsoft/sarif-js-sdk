@@ -29,7 +29,7 @@ declare global {
 
 export const toMatchSarifToolComponentReference = buildMatcher<MaybeToolComponentReference>({
   matcherName: 'toMatchSarifToolComponentReference',
-  definitionName: 'toolComponentReference',
+  definition: 'toolComponentReference',
 });
 
 expect.extend({ toMatchSarifToolComponentReference });

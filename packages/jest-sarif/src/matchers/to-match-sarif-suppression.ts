@@ -29,7 +29,7 @@ declare global {
 
 export const toMatchSarifSuppression = buildMatcher<MaybeSuppression>({
   matcherName: 'toMatchSarifSuppression',
-  definitionName: 'suppression',
+  definition: 'suppression',
 });
 
 expect.extend({ toMatchSarifSuppression });

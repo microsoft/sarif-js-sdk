@@ -29,7 +29,7 @@ declare global {
 
 export const toMatchSarifToolComponent = buildMatcher<MaybeToolComponent>({
   matcherName: 'toMatchSarifToolComponent',
-  definitionName: 'toolComponent',
+  definition: 'toolComponent',
 });
 
 expect.extend({ toMatchSarifToolComponent });

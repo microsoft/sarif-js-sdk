@@ -29,7 +29,7 @@ declare global {
 
 export const toMatchSarifStackFrame = buildMatcher<MaybeStackFrame>({
   matcherName: 'toMatchSarifStackFrame',
-  definitionName: 'stackFrame',
+  definition: 'stackFrame',
 });
 
 expect.extend({ toMatchSarifStackFrame });

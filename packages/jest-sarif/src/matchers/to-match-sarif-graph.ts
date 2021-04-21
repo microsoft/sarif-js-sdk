@@ -29,7 +29,7 @@ declare global {
 
 export const toMatchSarifGraph = buildMatcher<MaybeGraph>({
   matcherName: 'toMatchSarifGraph',
-  definitionName: 'graph',
+  definition: 'graph',
 });
 
 expect.extend({ toMatchSarifGraph });

@@ -29,7 +29,7 @@ declare global {
 
 export const toMatchSarifNotification = buildMatcher<MaybeNotification>({
   matcherName: 'toMatchSarifNotification',
-  definitionName: 'notification',
+  definition: 'notification',
 });
 
 expect.extend({ toMatchSarifNotification });

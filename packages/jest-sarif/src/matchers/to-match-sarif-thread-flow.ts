@@ -29,7 +29,7 @@ declare global {
 
 export const toMatchSarifThreadFlow = buildMatcher<MaybeThreadFlow>({
   matcherName: 'toMatchSarifThreadFlow',
-  definitionName: 'threadFlow',
+  definition: 'threadFlow',
 });
 
 expect.extend({ toMatchSarifThreadFlow });

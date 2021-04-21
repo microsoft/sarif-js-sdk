@@ -1,10 +1,10 @@
-import { Definitions } from './definitions';
+import { Definition } from './definition';
 
-export * from './definitions';
+export * from './definition';
 
 export interface SchemaOptions {
   schemaName?: string;
-  definitionName?: Definitions;
+  definition?: Definition;
 }
 
 /**

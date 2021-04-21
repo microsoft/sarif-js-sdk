@@ -29,7 +29,7 @@ declare global {
 
 export const toMatchSarifCodeFlow = buildMatcher<MaybeCodeFlow>({
   matcherName: 'toMatchSarifCodeFlow',
-  definitionName: 'codeFlow',
+  definition: 'codeFlow',
 });
 
 expect.extend({ toMatchSarifCodeFlow });

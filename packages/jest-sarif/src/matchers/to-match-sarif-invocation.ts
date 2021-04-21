@@ -29,7 +29,7 @@ declare global {
 
 export const toMatchSarifInvocation = buildMatcher<MaybeInvocation>({
   matcherName: 'toMatchSarifInvocation',
-  definitionName: 'invocation',
+  definition: 'invocation',
 });
 
 expect.extend({ toMatchSarifInvocation });

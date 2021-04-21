@@ -56,20 +56,22 @@ function getValidatorAndSchema(options: BuildMatcherOptions): [Ajv.Ajv, object |
     schemaId: 'auto',
     validateSchema: false,
   });
-  const schema = getSchema(options);
+  const schema = getSchema(options)!;
   const draft4MetaSchema = require('ajv/lib/refs/json-schema-draft-04.json');
 
   ajv.addMetaSchema(draft4MetaSchema);
 
-  if (options.definitionName) {
-    // When a definitionName is provided, we need to load the reference schema, which is the SARIF schema itself.
+  if (options.definition) {
+    // When a definition is provided, we need to load the reference schema, which is the SARIF schema itself.
     // This allows us to reference definitions in the SARIF schema via JSON pointers.
     // eg. "$ref": "#/definition/result"
-    ajv.addSchema(
-      getSchema({
-        schemaName: 'sarif',
-      })
-    );
+    const sarifSchema = getSchema({
+      schemaName: 'sarif',
+    });
+
+    if (sarifSchema) {
+      ajv.addSchema(sarifSchema);
+    }
   }
 
   return [ajv, schema];
@@ -81,17 +83,17 @@ function getValidatorAndSchema(options: BuildMatcherOptions): [Ajv.Ajv, object |
  * @param options
  * @param options.matcherName The name of the matcher.
  * @param options.schemaName [Optional] The name of the schema to load.
- * @param options.definitionName [Optional] The name of the SARIF schema definition fragment to dynamically build a schema for.
+ * @param options.definition [Optional] The name of the SARIF schema definition fragment to dynamically build a schema for.
  * @returns {jest.CustomMatcher}
  */
 export function buildMatcher<T>(options: BuildMatcherOptions): jest.CustomMatcher {
   const [ajv, schema] = getValidatorAndSchema(options);
+  const validate = ajv.compile(schema);
 
   // eslint-disable-next-line no-underscore-dangle
   const { verbose } = ajv._opts;
 
   return function (received: T) {
-    const validate = ajv.compile(schema);
     const pass = validate(received) as boolean;
 
     const message = pass

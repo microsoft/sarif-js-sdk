@@ -30,7 +30,7 @@ declare global {
 export const toMatchSarifExternalPropertyFileReference = buildMatcher<MaybeExternalPropertyFileReference>(
   {
     matcherName: 'toMatchSarifExternalPropertyFileReference',
-    definitionName: 'externalPropertyFileReference',
+    definition: 'externalPropertyFileReference',
   }
 );
 
