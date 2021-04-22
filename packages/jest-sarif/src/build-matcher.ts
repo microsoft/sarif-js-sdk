@@ -51,7 +51,16 @@ const formatForPrint = (input: unknown, displayType: boolean = true) => {
   return `${chalk.yellow(`<${typeof input}>`)} ${input}`;
 };
 
-function getValidatorAndSchema(options: BuildMatcherOptions): [Ajv.Ajv, object | boolean] {
+/**
+ * Builds a Jest matcher based on the supplied @type {BuildMatcherOptions}.
+ *
+ * @param options
+ * @param options.matcherName The name of the matcher.
+ * @param options.schemaName [Optional] The name of the schema to load.
+ * @param options.definition [Optional] The name of the SARIF schema definition fragment to dynamically build a schema for.
+ * @returns {jest.CustomMatcher}
+ */
+export function buildMatcher<T>(options: BuildMatcherOptions): jest.CustomMatcher {
   const ajv = new Ajv({
     schemaId: 'auto',
     validateSchema: false,
@@ -69,20 +78,6 @@ function getValidatorAndSchema(options: BuildMatcherOptions): [Ajv.Ajv, object |
     ajv.addSchema(require('./schemas/sarif-2.1.0-rtm.5.json'));
   }
 
-  return [ajv, schema];
-}
-
-/**
- * Builds a Jest matcher based on the supplied @type {BuildMatcherOptions}.
- *
- * @param options
- * @param options.matcherName The name of the matcher.
- * @param options.schemaName [Optional] The name of the schema to load.
- * @param options.definition [Optional] The name of the SARIF schema definition fragment to dynamically build a schema for.
- * @returns {jest.CustomMatcher}
- */
-export function buildMatcher<T>(options: BuildMatcherOptions): jest.CustomMatcher {
-  const [ajv, schema] = getValidatorAndSchema(options);
   const validate = ajv.compile(schema);
 
   // eslint-disable-next-line no-underscore-dangle
