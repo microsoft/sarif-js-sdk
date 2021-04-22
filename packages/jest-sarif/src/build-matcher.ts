@@ -65,13 +65,8 @@ function getValidatorAndSchema(options: BuildMatcherOptions): [Ajv.Ajv, object |
     // When a definition is provided, we need to load the reference schema, which is the SARIF schema itself.
     // This allows us to reference definitions in the SARIF schema via JSON pointers.
     // eg. "$ref": "#/definition/result"
-    const sarifSchema = getSchema({
-      schemaName: 'sarif',
-    });
 
-    if (sarifSchema) {
-      ajv.addSchema(sarifSchema);
-    }
+    ajv.addSchema(require('./schemas/sarif-2.1.0-rtm.5.json'));
   }
 
   return [ajv, schema];
