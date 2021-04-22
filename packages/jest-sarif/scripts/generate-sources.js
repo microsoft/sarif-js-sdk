@@ -30,21 +30,21 @@ function generateMatchers() {
     {
       definition: 'log',
       type: 'Log',
-      matcherName: 'toMatchSarifLog',
-      matcherPath: 'to-match-sarif-log',
+      matcherName: 'toBeValidSarifLog',
+      matcherPath: 'to-be-valid-sarif-log',
     },
   ];
-  const template = getTemplate('to-match-sarif-template.ts');
+  const template = getTemplate('to-be-valid-sarif-template.ts');
 
-  // Generate ./src/matchers/to-match-sarif-<matcherName>.ts
+  // Generate ./src/matchers/to-be-valid-sarif-<matcherName>.ts
   for (const definition of definitions) {
-    const destinationPath = getSourcePath(`to-match-sarif-${kebabCase(definition)}`);
+    const destinationPath = getSourcePath(`to-be-valid-sarif-${kebabCase(definition)}`);
     const type = startCase(camelCase(definition)).replace(/ /g, '');
     const data = {
       definition,
       type,
       maybeType: `Maybe${type}`,
-      matcherName: `toMatchSarif${type}`,
+      matcherName: `toBeValidSarif${type}`,
     };
 
     const renderedMatcher = template(data);
@@ -53,7 +53,7 @@ function generateMatchers() {
 
     matchersData.push(
       Object.assign({}, data, {
-        matcherPath: `to-match-sarif-${kebabCase(definition)}`,
+        matcherPath: `to-be-valid-sarif-${kebabCase(definition)}`,
       })
     );
   }

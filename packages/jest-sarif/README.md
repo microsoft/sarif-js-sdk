@@ -57,639 +57,639 @@ You can import and use the matchers in one of two ways:
 
 <!--MATCHERS_START-->
 
-### `toMatchSarifLog`
+### `toBeValidSarifLog`
 
-Asserts that a value matches a valid SARIF log.
+Asserts that a value is a valid SARIF log.
 
 ```ts
-it('should match SARIF log', () => {
+it('should be a valid SARIF log', () => {
   const sarifLog = buildSarifLog();
 
-  expect(sarifLog).toMatchSarifLog();
+  expect(sarifLog).toBeValidSarifLog();
 });
 ```
 
-### `toMatchSarifAddress`
+### `toBeValidSarifAddress`
 
-Asserts that a value matches a valid SARIF address.
+Asserts that a value is a valid SARIF address.
 
 ```ts
-it('should match SARIF address', () => {
+it('should be a valid SARIF address', () => {
   const sarifAddress = buildSarifAddress();
 
-  expect(sarifAddress).toMatchSarifAddress();
+  expect(sarifAddress).toBeValidSarifAddress();
 });
 ```
 
-### `toMatchSarifArtifact`
+### `toBeValidSarifArtifact`
 
-Asserts that a value matches a valid SARIF artifact.
+Asserts that a value is a valid SARIF artifact.
 
 ```ts
-it('should match SARIF artifact', () => {
+it('should be a valid SARIF artifact', () => {
   const sarifArtifact = buildSarifArtifact();
 
-  expect(sarifArtifact).toMatchSarifArtifact();
+  expect(sarifArtifact).toBeValidSarifArtifact();
 });
 ```
 
-### `toMatchSarifArtifactChange`
+### `toBeValidSarifArtifactChange`
 
-Asserts that a value matches a valid SARIF artifactChange.
+Asserts that a value is a valid SARIF artifactChange.
 
 ```ts
-it('should match SARIF artifactChange', () => {
+it('should be a valid SARIF artifactChange', () => {
   const sarifArtifactChange = buildSarifArtifactChange();
 
-  expect(sarifArtifactChange).toMatchSarifArtifactChange();
+  expect(sarifArtifactChange).toBeValidSarifArtifactChange();
 });
 ```
 
-### `toMatchSarifArtifactContent`
+### `toBeValidSarifArtifactContent`
 
-Asserts that a value matches a valid SARIF artifactContent.
+Asserts that a value is a valid SARIF artifactContent.
 
 ```ts
-it('should match SARIF artifactContent', () => {
+it('should be a valid SARIF artifactContent', () => {
   const sarifArtifactContent = buildSarifArtifactContent();
 
-  expect(sarifArtifactContent).toMatchSarifArtifactContent();
+  expect(sarifArtifactContent).toBeValidSarifArtifactContent();
 });
 ```
 
-### `toMatchSarifArtifactLocation`
+### `toBeValidSarifArtifactLocation`
 
-Asserts that a value matches a valid SARIF artifactLocation.
+Asserts that a value is a valid SARIF artifactLocation.
 
 ```ts
-it('should match SARIF artifactLocation', () => {
+it('should be a valid SARIF artifactLocation', () => {
   const sarifArtifactLocation = buildSarifArtifactLocation();
 
-  expect(sarifArtifactLocation).toMatchSarifArtifactLocation();
+  expect(sarifArtifactLocation).toBeValidSarifArtifactLocation();
 });
 ```
 
-### `toMatchSarifAttachment`
+### `toBeValidSarifAttachment`
 
-Asserts that a value matches a valid SARIF attachment.
+Asserts that a value is a valid SARIF attachment.
 
 ```ts
-it('should match SARIF attachment', () => {
+it('should be a valid SARIF attachment', () => {
   const sarifAttachment = buildSarifAttachment();
 
-  expect(sarifAttachment).toMatchSarifAttachment();
+  expect(sarifAttachment).toBeValidSarifAttachment();
 });
 ```
 
-### `toMatchSarifCodeFlow`
+### `toBeValidSarifCodeFlow`
 
-Asserts that a value matches a valid SARIF codeFlow.
+Asserts that a value is a valid SARIF codeFlow.
 
 ```ts
-it('should match SARIF codeFlow', () => {
+it('should be a valid SARIF codeFlow', () => {
   const sarifCodeFlow = buildSarifCodeFlow();
 
-  expect(sarifCodeFlow).toMatchSarifCodeFlow();
+  expect(sarifCodeFlow).toBeValidSarifCodeFlow();
 });
 ```
 
-### `toMatchSarifConfigurationOverride`
+### `toBeValidSarifConfigurationOverride`
 
-Asserts that a value matches a valid SARIF configurationOverride.
+Asserts that a value is a valid SARIF configurationOverride.
 
 ```ts
-it('should match SARIF configurationOverride', () => {
+it('should be a valid SARIF configurationOverride', () => {
   const sarifConfigurationOverride = buildSarifConfigurationOverride();
 
-  expect(sarifConfigurationOverride).toMatchSarifConfigurationOverride();
+  expect(sarifConfigurationOverride).toBeValidSarifConfigurationOverride();
 });
 ```
 
-### `toMatchSarifConversion`
+### `toBeValidSarifConversion`
 
-Asserts that a value matches a valid SARIF conversion.
+Asserts that a value is a valid SARIF conversion.
 
 ```ts
-it('should match SARIF conversion', () => {
+it('should be a valid SARIF conversion', () => {
   const sarifConversion = buildSarifConversion();
 
-  expect(sarifConversion).toMatchSarifConversion();
+  expect(sarifConversion).toBeValidSarifConversion();
 });
 ```
 
-### `toMatchSarifEdge`
+### `toBeValidSarifEdge`
 
-Asserts that a value matches a valid SARIF edge.
+Asserts that a value is a valid SARIF edge.
 
 ```ts
-it('should match SARIF edge', () => {
+it('should be a valid SARIF edge', () => {
   const sarifEdge = buildSarifEdge();
 
-  expect(sarifEdge).toMatchSarifEdge();
+  expect(sarifEdge).toBeValidSarifEdge();
 });
 ```
 
-### `toMatchSarifEdgeTraversal`
+### `toBeValidSarifEdgeTraversal`
 
-Asserts that a value matches a valid SARIF edgeTraversal.
+Asserts that a value is a valid SARIF edgeTraversal.
 
 ```ts
-it('should match SARIF edgeTraversal', () => {
+it('should be a valid SARIF edgeTraversal', () => {
   const sarifEdgeTraversal = buildSarifEdgeTraversal();
 
-  expect(sarifEdgeTraversal).toMatchSarifEdgeTraversal();
+  expect(sarifEdgeTraversal).toBeValidSarifEdgeTraversal();
 });
 ```
 
-### `toMatchSarifException`
+### `toBeValidSarifException`
 
-Asserts that a value matches a valid SARIF exception.
+Asserts that a value is a valid SARIF exception.
 
 ```ts
-it('should match SARIF exception', () => {
+it('should be a valid SARIF exception', () => {
   const sarifException = buildSarifException();
 
-  expect(sarifException).toMatchSarifException();
+  expect(sarifException).toBeValidSarifException();
 });
 ```
 
-### `toMatchSarifExternalProperties`
+### `toBeValidSarifExternalProperties`
 
-Asserts that a value matches a valid SARIF externalProperties.
+Asserts that a value is a valid SARIF externalProperties.
 
 ```ts
-it('should match SARIF externalProperties', () => {
+it('should be a valid SARIF externalProperties', () => {
   const sarifExternalProperties = buildSarifExternalProperties();
 
-  expect(sarifExternalProperties).toMatchSarifExternalProperties();
+  expect(sarifExternalProperties).toBeValidSarifExternalProperties();
 });
 ```
 
-### `toMatchSarifExternalPropertyFileReference`
+### `toBeValidSarifExternalPropertyFileReference`
 
-Asserts that a value matches a valid SARIF externalPropertyFileReference.
+Asserts that a value is a valid SARIF externalPropertyFileReference.
 
 ```ts
-it('should match SARIF externalPropertyFileReference', () => {
+it('should be a valid SARIF externalPropertyFileReference', () => {
   const sarifExternalPropertyFileReference = buildSarifExternalPropertyFileReference();
 
-  expect(sarifExternalPropertyFileReference).toMatchSarifExternalPropertyFileReference();
+  expect(sarifExternalPropertyFileReference).toBeValidSarifExternalPropertyFileReference();
 });
 ```
 
-### `toMatchSarifExternalPropertyFileReferences`
+### `toBeValidSarifExternalPropertyFileReferences`
 
-Asserts that a value matches a valid SARIF externalPropertyFileReferences.
+Asserts that a value is a valid SARIF externalPropertyFileReferences.
 
 ```ts
-it('should match SARIF externalPropertyFileReferences', () => {
+it('should be a valid SARIF externalPropertyFileReferences', () => {
   const sarifExternalPropertyFileReferences = buildSarifExternalPropertyFileReferences();
 
-  expect(sarifExternalPropertyFileReferences).toMatchSarifExternalPropertyFileReferences();
+  expect(sarifExternalPropertyFileReferences).toBeValidSarifExternalPropertyFileReferences();
 });
 ```
 
-### `toMatchSarifFix`
+### `toBeValidSarifFix`
 
-Asserts that a value matches a valid SARIF fix.
+Asserts that a value is a valid SARIF fix.
 
 ```ts
-it('should match SARIF fix', () => {
+it('should be a valid SARIF fix', () => {
   const sarifFix = buildSarifFix();
 
-  expect(sarifFix).toMatchSarifFix();
+  expect(sarifFix).toBeValidSarifFix();
 });
 ```
 
-### `toMatchSarifGraph`
+### `toBeValidSarifGraph`
 
-Asserts that a value matches a valid SARIF graph.
+Asserts that a value is a valid SARIF graph.
 
 ```ts
-it('should match SARIF graph', () => {
+it('should be a valid SARIF graph', () => {
   const sarifGraph = buildSarifGraph();
 
-  expect(sarifGraph).toMatchSarifGraph();
+  expect(sarifGraph).toBeValidSarifGraph();
 });
 ```
 
-### `toMatchSarifGraphTraversal`
+### `toBeValidSarifGraphTraversal`
 
-Asserts that a value matches a valid SARIF graphTraversal.
+Asserts that a value is a valid SARIF graphTraversal.
 
 ```ts
-it('should match SARIF graphTraversal', () => {
+it('should be a valid SARIF graphTraversal', () => {
   const sarifGraphTraversal = buildSarifGraphTraversal();
 
-  expect(sarifGraphTraversal).toMatchSarifGraphTraversal();
+  expect(sarifGraphTraversal).toBeValidSarifGraphTraversal();
 });
 ```
 
-### `toMatchSarifInvocation`
+### `toBeValidSarifInvocation`
 
-Asserts that a value matches a valid SARIF invocation.
+Asserts that a value is a valid SARIF invocation.
 
 ```ts
-it('should match SARIF invocation', () => {
+it('should be a valid SARIF invocation', () => {
   const sarifInvocation = buildSarifInvocation();
 
-  expect(sarifInvocation).toMatchSarifInvocation();
+  expect(sarifInvocation).toBeValidSarifInvocation();
 });
 ```
 
-### `toMatchSarifLocation`
+### `toBeValidSarifLocation`
 
-Asserts that a value matches a valid SARIF location.
+Asserts that a value is a valid SARIF location.
 
 ```ts
-it('should match SARIF location', () => {
+it('should be a valid SARIF location', () => {
   const sarifLocation = buildSarifLocation();
 
-  expect(sarifLocation).toMatchSarifLocation();
+  expect(sarifLocation).toBeValidSarifLocation();
 });
 ```
 
-### `toMatchSarifLocationRelationship`
+### `toBeValidSarifLocationRelationship`
 
-Asserts that a value matches a valid SARIF locationRelationship.
+Asserts that a value is a valid SARIF locationRelationship.
 
 ```ts
-it('should match SARIF locationRelationship', () => {
+it('should be a valid SARIF locationRelationship', () => {
   const sarifLocationRelationship = buildSarifLocationRelationship();
 
-  expect(sarifLocationRelationship).toMatchSarifLocationRelationship();
+  expect(sarifLocationRelationship).toBeValidSarifLocationRelationship();
 });
 ```
 
-### `toMatchSarifLogicalLocation`
+### `toBeValidSarifLogicalLocation`
 
-Asserts that a value matches a valid SARIF logicalLocation.
+Asserts that a value is a valid SARIF logicalLocation.
 
 ```ts
-it('should match SARIF logicalLocation', () => {
+it('should be a valid SARIF logicalLocation', () => {
   const sarifLogicalLocation = buildSarifLogicalLocation();
 
-  expect(sarifLogicalLocation).toMatchSarifLogicalLocation();
+  expect(sarifLogicalLocation).toBeValidSarifLogicalLocation();
 });
 ```
 
-### `toMatchSarifMessage`
+### `toBeValidSarifMessage`
 
-Asserts that a value matches a valid SARIF message.
+Asserts that a value is a valid SARIF message.
 
 ```ts
-it('should match SARIF message', () => {
+it('should be a valid SARIF message', () => {
   const sarifMessage = buildSarifMessage();
 
-  expect(sarifMessage).toMatchSarifMessage();
+  expect(sarifMessage).toBeValidSarifMessage();
 });
 ```
 
-### `toMatchSarifMultiformatMessageString`
+### `toBeValidSarifMultiformatMessageString`
 
-Asserts that a value matches a valid SARIF multiformatMessageString.
+Asserts that a value is a valid SARIF multiformatMessageString.
 
 ```ts
-it('should match SARIF multiformatMessageString', () => {
+it('should be a valid SARIF multiformatMessageString', () => {
   const sarifMultiformatMessageString = buildSarifMultiformatMessageString();
 
-  expect(sarifMultiformatMessageString).toMatchSarifMultiformatMessageString();
+  expect(sarifMultiformatMessageString).toBeValidSarifMultiformatMessageString();
 });
 ```
 
-### `toMatchSarifNode`
+### `toBeValidSarifNode`
 
-Asserts that a value matches a valid SARIF node.
+Asserts that a value is a valid SARIF node.
 
 ```ts
-it('should match SARIF node', () => {
+it('should be a valid SARIF node', () => {
   const sarifNode = buildSarifNode();
 
-  expect(sarifNode).toMatchSarifNode();
+  expect(sarifNode).toBeValidSarifNode();
 });
 ```
 
-### `toMatchSarifNotification`
+### `toBeValidSarifNotification`
 
-Asserts that a value matches a valid SARIF notification.
+Asserts that a value is a valid SARIF notification.
 
 ```ts
-it('should match SARIF notification', () => {
+it('should be a valid SARIF notification', () => {
   const sarifNotification = buildSarifNotification();
 
-  expect(sarifNotification).toMatchSarifNotification();
+  expect(sarifNotification).toBeValidSarifNotification();
 });
 ```
 
-### `toMatchSarifPhysicalLocation`
+### `toBeValidSarifPhysicalLocation`
 
-Asserts that a value matches a valid SARIF physicalLocation.
+Asserts that a value is a valid SARIF physicalLocation.
 
 ```ts
-it('should match SARIF physicalLocation', () => {
+it('should be a valid SARIF physicalLocation', () => {
   const sarifPhysicalLocation = buildSarifPhysicalLocation();
 
-  expect(sarifPhysicalLocation).toMatchSarifPhysicalLocation();
+  expect(sarifPhysicalLocation).toBeValidSarifPhysicalLocation();
 });
 ```
 
-### `toMatchSarifPropertyBag`
+### `toBeValidSarifPropertyBag`
 
-Asserts that a value matches a valid SARIF propertyBag.
+Asserts that a value is a valid SARIF propertyBag.
 
 ```ts
-it('should match SARIF propertyBag', () => {
+it('should be a valid SARIF propertyBag', () => {
   const sarifPropertyBag = buildSarifPropertyBag();
 
-  expect(sarifPropertyBag).toMatchSarifPropertyBag();
+  expect(sarifPropertyBag).toBeValidSarifPropertyBag();
 });
 ```
 
-### `toMatchSarifRectangle`
+### `toBeValidSarifRectangle`
 
-Asserts that a value matches a valid SARIF rectangle.
+Asserts that a value is a valid SARIF rectangle.
 
 ```ts
-it('should match SARIF rectangle', () => {
+it('should be a valid SARIF rectangle', () => {
   const sarifRectangle = buildSarifRectangle();
 
-  expect(sarifRectangle).toMatchSarifRectangle();
+  expect(sarifRectangle).toBeValidSarifRectangle();
 });
 ```
 
-### `toMatchSarifRegion`
+### `toBeValidSarifRegion`
 
-Asserts that a value matches a valid SARIF region.
+Asserts that a value is a valid SARIF region.
 
 ```ts
-it('should match SARIF region', () => {
+it('should be a valid SARIF region', () => {
   const sarifRegion = buildSarifRegion();
 
-  expect(sarifRegion).toMatchSarifRegion();
+  expect(sarifRegion).toBeValidSarifRegion();
 });
 ```
 
-### `toMatchSarifReplacement`
+### `toBeValidSarifReplacement`
 
-Asserts that a value matches a valid SARIF replacement.
+Asserts that a value is a valid SARIF replacement.
 
 ```ts
-it('should match SARIF replacement', () => {
+it('should be a valid SARIF replacement', () => {
   const sarifReplacement = buildSarifReplacement();
 
-  expect(sarifReplacement).toMatchSarifReplacement();
+  expect(sarifReplacement).toBeValidSarifReplacement();
 });
 ```
 
-### `toMatchSarifReportingDescriptor`
+### `toBeValidSarifReportingDescriptor`
 
-Asserts that a value matches a valid SARIF reportingDescriptor.
+Asserts that a value is a valid SARIF reportingDescriptor.
 
 ```ts
-it('should match SARIF reportingDescriptor', () => {
+it('should be a valid SARIF reportingDescriptor', () => {
   const sarifReportingDescriptor = buildSarifReportingDescriptor();
 
-  expect(sarifReportingDescriptor).toMatchSarifReportingDescriptor();
+  expect(sarifReportingDescriptor).toBeValidSarifReportingDescriptor();
 });
 ```
 
-### `toMatchSarifReportingConfiguration`
+### `toBeValidSarifReportingConfiguration`
 
-Asserts that a value matches a valid SARIF reportingConfiguration.
+Asserts that a value is a valid SARIF reportingConfiguration.
 
 ```ts
-it('should match SARIF reportingConfiguration', () => {
+it('should be a valid SARIF reportingConfiguration', () => {
   const sarifReportingConfiguration = buildSarifReportingConfiguration();
 
-  expect(sarifReportingConfiguration).toMatchSarifReportingConfiguration();
+  expect(sarifReportingConfiguration).toBeValidSarifReportingConfiguration();
 });
 ```
 
-### `toMatchSarifReportingDescriptorReference`
+### `toBeValidSarifReportingDescriptorReference`
 
-Asserts that a value matches a valid SARIF reportingDescriptorReference.
+Asserts that a value is a valid SARIF reportingDescriptorReference.
 
 ```ts
-it('should match SARIF reportingDescriptorReference', () => {
+it('should be a valid SARIF reportingDescriptorReference', () => {
   const sarifReportingDescriptorReference = buildSarifReportingDescriptorReference();
 
-  expect(sarifReportingDescriptorReference).toMatchSarifReportingDescriptorReference();
+  expect(sarifReportingDescriptorReference).toBeValidSarifReportingDescriptorReference();
 });
 ```
 
-### `toMatchSarifReportingDescriptorRelationship`
+### `toBeValidSarifReportingDescriptorRelationship`
 
-Asserts that a value matches a valid SARIF reportingDescriptorRelationship.
+Asserts that a value is a valid SARIF reportingDescriptorRelationship.
 
 ```ts
-it('should match SARIF reportingDescriptorRelationship', () => {
+it('should be a valid SARIF reportingDescriptorRelationship', () => {
   const sarifReportingDescriptorRelationship = buildSarifReportingDescriptorRelationship();
 
-  expect(sarifReportingDescriptorRelationship).toMatchSarifReportingDescriptorRelationship();
+  expect(sarifReportingDescriptorRelationship).toBeValidSarifReportingDescriptorRelationship();
 });
 ```
 
-### `toMatchSarifResult`
+### `toBeValidSarifResult`
 
-Asserts that a value matches a valid SARIF result.
+Asserts that a value is a valid SARIF result.
 
 ```ts
-it('should match SARIF result', () => {
+it('should be a valid SARIF result', () => {
   const sarifResult = buildSarifResult();
 
-  expect(sarifResult).toMatchSarifResult();
+  expect(sarifResult).toBeValidSarifResult();
 });
 ```
 
-### `toMatchSarifResultProvenance`
+### `toBeValidSarifResultProvenance`
 
-Asserts that a value matches a valid SARIF resultProvenance.
+Asserts that a value is a valid SARIF resultProvenance.
 
 ```ts
-it('should match SARIF resultProvenance', () => {
+it('should be a valid SARIF resultProvenance', () => {
   const sarifResultProvenance = buildSarifResultProvenance();
 
-  expect(sarifResultProvenance).toMatchSarifResultProvenance();
+  expect(sarifResultProvenance).toBeValidSarifResultProvenance();
 });
 ```
 
-### `toMatchSarifRun`
+### `toBeValidSarifRun`
 
-Asserts that a value matches a valid SARIF run.
+Asserts that a value is a valid SARIF run.
 
 ```ts
-it('should match SARIF run', () => {
+it('should be a valid SARIF run', () => {
   const sarifRun = buildSarifRun();
 
-  expect(sarifRun).toMatchSarifRun();
+  expect(sarifRun).toBeValidSarifRun();
 });
 ```
 
-### `toMatchSarifRunAutomationDetails`
+### `toBeValidSarifRunAutomationDetails`
 
-Asserts that a value matches a valid SARIF runAutomationDetails.
+Asserts that a value is a valid SARIF runAutomationDetails.
 
 ```ts
-it('should match SARIF runAutomationDetails', () => {
+it('should be a valid SARIF runAutomationDetails', () => {
   const sarifRunAutomationDetails = buildSarifRunAutomationDetails();
 
-  expect(sarifRunAutomationDetails).toMatchSarifRunAutomationDetails();
+  expect(sarifRunAutomationDetails).toBeValidSarifRunAutomationDetails();
 });
 ```
 
-### `toMatchSarifSpecialLocations`
+### `toBeValidSarifSpecialLocations`
 
-Asserts that a value matches a valid SARIF specialLocations.
+Asserts that a value is a valid SARIF specialLocations.
 
 ```ts
-it('should match SARIF specialLocations', () => {
+it('should be a valid SARIF specialLocations', () => {
   const sarifSpecialLocations = buildSarifSpecialLocations();
 
-  expect(sarifSpecialLocations).toMatchSarifSpecialLocations();
+  expect(sarifSpecialLocations).toBeValidSarifSpecialLocations();
 });
 ```
 
-### `toMatchSarifStack`
+### `toBeValidSarifStack`
 
-Asserts that a value matches a valid SARIF stack.
+Asserts that a value is a valid SARIF stack.
 
 ```ts
-it('should match SARIF stack', () => {
+it('should be a valid SARIF stack', () => {
   const sarifStack = buildSarifStack();
 
-  expect(sarifStack).toMatchSarifStack();
+  expect(sarifStack).toBeValidSarifStack();
 });
 ```
 
-### `toMatchSarifStackFrame`
+### `toBeValidSarifStackFrame`
 
-Asserts that a value matches a valid SARIF stackFrame.
+Asserts that a value is a valid SARIF stackFrame.
 
 ```ts
-it('should match SARIF stackFrame', () => {
+it('should be a valid SARIF stackFrame', () => {
   const sarifStackFrame = buildSarifStackFrame();
 
-  expect(sarifStackFrame).toMatchSarifStackFrame();
+  expect(sarifStackFrame).toBeValidSarifStackFrame();
 });
 ```
 
-### `toMatchSarifSuppression`
+### `toBeValidSarifSuppression`
 
-Asserts that a value matches a valid SARIF suppression.
+Asserts that a value is a valid SARIF suppression.
 
 ```ts
-it('should match SARIF suppression', () => {
+it('should be a valid SARIF suppression', () => {
   const sarifSuppression = buildSarifSuppression();
 
-  expect(sarifSuppression).toMatchSarifSuppression();
+  expect(sarifSuppression).toBeValidSarifSuppression();
 });
 ```
 
-### `toMatchSarifThreadFlow`
+### `toBeValidSarifThreadFlow`
 
-Asserts that a value matches a valid SARIF threadFlow.
+Asserts that a value is a valid SARIF threadFlow.
 
 ```ts
-it('should match SARIF threadFlow', () => {
+it('should be a valid SARIF threadFlow', () => {
   const sarifThreadFlow = buildSarifThreadFlow();
 
-  expect(sarifThreadFlow).toMatchSarifThreadFlow();
+  expect(sarifThreadFlow).toBeValidSarifThreadFlow();
 });
 ```
 
-### `toMatchSarifThreadFlowLocation`
+### `toBeValidSarifThreadFlowLocation`
 
-Asserts that a value matches a valid SARIF threadFlowLocation.
+Asserts that a value is a valid SARIF threadFlowLocation.
 
 ```ts
-it('should match SARIF threadFlowLocation', () => {
+it('should be a valid SARIF threadFlowLocation', () => {
   const sarifThreadFlowLocation = buildSarifThreadFlowLocation();
 
-  expect(sarifThreadFlowLocation).toMatchSarifThreadFlowLocation();
+  expect(sarifThreadFlowLocation).toBeValidSarifThreadFlowLocation();
 });
 ```
 
-### `toMatchSarifTool`
+### `toBeValidSarifTool`
 
-Asserts that a value matches a valid SARIF tool.
+Asserts that a value is a valid SARIF tool.
 
 ```ts
-it('should match SARIF tool', () => {
+it('should be a valid SARIF tool', () => {
   const sarifTool = buildSarifTool();
 
-  expect(sarifTool).toMatchSarifTool();
+  expect(sarifTool).toBeValidSarifTool();
 });
 ```
 
-### `toMatchSarifToolComponent`
+### `toBeValidSarifToolComponent`
 
-Asserts that a value matches a valid SARIF toolComponent.
+Asserts that a value is a valid SARIF toolComponent.
 
 ```ts
-it('should match SARIF toolComponent', () => {
+it('should be a valid SARIF toolComponent', () => {
   const sarifToolComponent = buildSarifToolComponent();
 
-  expect(sarifToolComponent).toMatchSarifToolComponent();
+  expect(sarifToolComponent).toBeValidSarifToolComponent();
 });
 ```
 
-### `toMatchSarifToolComponentReference`
+### `toBeValidSarifToolComponentReference`
 
-Asserts that a value matches a valid SARIF toolComponentReference.
+Asserts that a value is a valid SARIF toolComponentReference.
 
 ```ts
-it('should match SARIF toolComponentReference', () => {
+it('should be a valid SARIF toolComponentReference', () => {
   const sarifToolComponentReference = buildSarifToolComponentReference();
 
-  expect(sarifToolComponentReference).toMatchSarifToolComponentReference();
+  expect(sarifToolComponentReference).toBeValidSarifToolComponentReference();
 });
 ```
 
-### `toMatchSarifTranslationMetadata`
+### `toBeValidSarifTranslationMetadata`
 
-Asserts that a value matches a valid SARIF translationMetadata.
+Asserts that a value is a valid SARIF translationMetadata.
 
 ```ts
-it('should match SARIF translationMetadata', () => {
+it('should be a valid SARIF translationMetadata', () => {
   const sarifTranslationMetadata = buildSarifTranslationMetadata();
 
-  expect(sarifTranslationMetadata).toMatchSarifTranslationMetadata();
+  expect(sarifTranslationMetadata).toBeValidSarifTranslationMetadata();
 });
 ```
 
-### `toMatchSarifVersionControlDetails`
+### `toBeValidSarifVersionControlDetails`
 
-Asserts that a value matches a valid SARIF versionControlDetails.
+Asserts that a value is a valid SARIF versionControlDetails.
 
 ```ts
-it('should match SARIF versionControlDetails', () => {
+it('should be a valid SARIF versionControlDetails', () => {
   const sarifVersionControlDetails = buildSarifVersionControlDetails();
 
-  expect(sarifVersionControlDetails).toMatchSarifVersionControlDetails();
+  expect(sarifVersionControlDetails).toBeValidSarifVersionControlDetails();
 });
 ```
 
-### `toMatchSarifWebRequest`
+### `toBeValidSarifWebRequest`
 
-Asserts that a value matches a valid SARIF webRequest.
+Asserts that a value is a valid SARIF webRequest.
 
 ```ts
-it('should match SARIF webRequest', () => {
+it('should be a valid SARIF webRequest', () => {
   const sarifWebRequest = buildSarifWebRequest();
 
-  expect(sarifWebRequest).toMatchSarifWebRequest();
+  expect(sarifWebRequest).toBeValidSarifWebRequest();
 });
 ```
 
-### `toMatchSarifWebResponse`
+### `toBeValidSarifWebResponse`
 
-Asserts that a value matches a valid SARIF webResponse.
+Asserts that a value is a valid SARIF webResponse.
 
 ```ts
-it('should match SARIF webResponse', () => {
+it('should be a valid SARIF webResponse', () => {
   const sarifWebResponse = buildSarifWebResponse();
 
-  expect(sarifWebResponse).toMatchSarifWebResponse();
+  expect(sarifWebResponse).toBeValidSarifWebResponse();
 });
 ```
 
