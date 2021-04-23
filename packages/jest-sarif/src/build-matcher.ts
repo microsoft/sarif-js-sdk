@@ -2,7 +2,6 @@ import { EOL } from 'os';
 import Ajv, { AdditionalPropertiesParams, IfParams } from 'ajv';
 import { matcherHint } from 'jest-matcher-utils';
 import chalk from 'chalk';
-import { getSchema } from './sarif-schema';
 import { BuildMatcherOptions } from './types';
 
 // Keywords where the `Expected: ...` output is hidden
@@ -32,6 +31,8 @@ const ERROR_KEYWORDS_SHOW_RECEIVED = new Set(['if', 'not']);
 
 const isObject = (value: unknown) => value !== null && typeof value === 'object';
 
+const sarifV2Schema = require('./schemas/sarif-2.1.0-rtm.5.json');
+
 let ajv: Ajv.Ajv;
 
 const formatForPrint = (input: unknown, displayType: boolean = true) => {
@@ -53,10 +54,11 @@ const formatForPrint = (input: unknown, displayType: boolean = true) => {
   return `${chalk.yellow(`<${typeof input}>`)} ${input}`;
 };
 
-function buildValidator(
-  schema: any,
-  options: BuildMatcherOptions
-): [Ajv.ValidateFunction, boolean | undefined] {
+function buildValidator(options: BuildMatcherOptions): [Ajv.ValidateFunction, boolean | undefined] {
+  const keyRef = options.definition
+    ? `${sarifV2Schema.id}#/definitions/${options.definition}`
+    : sarifV2Schema.id;
+
   if (!ajv) {
     const draft4MetaSchema = require('ajv/lib/refs/json-schema-draft-04.json');
 
@@ -66,17 +68,10 @@ function buildValidator(
     });
 
     ajv.addMetaSchema(draft4MetaSchema);
-
-    if (options.definition) {
-      // When a definition is provided, we need to load the reference schema, which is the SARIF schema itself.
-      // This allows us to reference definitions in the SARIF schema via JSON pointers.
-      // eg. "$ref": "#/definition/result"
-
-      ajv.addSchema(require('./schemas/sarif-2.1.0-rtm.5.json'));
-    }
+    ajv.addSchema(sarifV2Schema);
   }
 
-  const validate = ajv.compile(schema);
+  const validate = ajv.getSchema(keyRef)!;
   // eslint-disable-next-line no-underscore-dangle
   const { verbose } = ajv._opts;
 
@@ -93,8 +88,7 @@ function buildValidator(
  * @returns {jest.CustomMatcher}
  */
 export function buildMatcher<T>(options: BuildMatcherOptions): jest.CustomMatcher {
-  const schema = getSchema(options)!;
-  const [validate, verbose] = buildValidator(schema, options);
+  const [validate, verbose] = buildValidator(options);
 
   return function (received: T) {
     const pass = validate(received) as boolean;

@@ -28,7 +28,6 @@ declare global {
 
 export const toBeValidSarifLog = buildMatcher<MaybeSarifLog>({
   matcherName: 'toBeValidSarifLog',
-  schemaName: 'sarif',
 });
 
 expect.extend({ toBeValidSarifLog });
