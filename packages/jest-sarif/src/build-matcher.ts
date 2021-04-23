@@ -32,6 +32,8 @@ const ERROR_KEYWORDS_SHOW_RECEIVED = new Set(['if', 'not']);
 
 const isObject = (value: unknown) => value !== null && typeof value === 'object';
 
+let ajv: Ajv.Ajv;
+
 const formatForPrint = (input: unknown, displayType: boolean = true) => {
   if (input === undefined || input === null) {
     return chalk.yellow(`<${input}>`);
@@ -51,6 +53,36 @@ const formatForPrint = (input: unknown, displayType: boolean = true) => {
   return `${chalk.yellow(`<${typeof input}>`)} ${input}`;
 };
 
+function buildValidator(
+  schema: any,
+  options: BuildMatcherOptions
+): [Ajv.ValidateFunction, boolean | undefined] {
+  if (!ajv) {
+    const draft4MetaSchema = require('ajv/lib/refs/json-schema-draft-04.json');
+
+    ajv = new Ajv({
+      schemaId: 'auto',
+      validateSchema: false,
+    });
+
+    ajv.addMetaSchema(draft4MetaSchema);
+
+    if (options.definition) {
+      // When a definition is provided, we need to load the reference schema, which is the SARIF schema itself.
+      // This allows us to reference definitions in the SARIF schema via JSON pointers.
+      // eg. "$ref": "#/definition/result"
+
+      ajv.addSchema(require('./schemas/sarif-2.1.0-rtm.5.json'));
+    }
+  }
+
+  const validate = ajv.compile(schema);
+  // eslint-disable-next-line no-underscore-dangle
+  const { verbose } = ajv._opts;
+
+  return [validate, verbose];
+}
+
 /**
  * Builds a Jest matcher based on the supplied @type {BuildMatcherOptions}.
  *
@@ -61,27 +93,8 @@ const formatForPrint = (input: unknown, displayType: boolean = true) => {
  * @returns {jest.CustomMatcher}
  */
 export function buildMatcher<T>(options: BuildMatcherOptions): jest.CustomMatcher {
-  const ajv = new Ajv({
-    schemaId: 'auto',
-    validateSchema: false,
-  });
   const schema = getSchema(options)!;
-  const draft4MetaSchema = require('ajv/lib/refs/json-schema-draft-04.json');
-
-  ajv.addMetaSchema(draft4MetaSchema);
-
-  if (options.definition) {
-    // When a definition is provided, we need to load the reference schema, which is the SARIF schema itself.
-    // This allows us to reference definitions in the SARIF schema via JSON pointers.
-    // eg. "$ref": "#/definition/result"
-
-    ajv.addSchema(require('./schemas/sarif-2.1.0-rtm.5.json'));
-  }
-
-  const validate = ajv.compile(schema);
-
-  // eslint-disable-next-line no-underscore-dangle
-  const { verbose } = ajv._opts;
+  const [validate, verbose] = buildValidator(schema, options);
 
   return function (received: T) {
     const pass = validate(received) as boolean;
