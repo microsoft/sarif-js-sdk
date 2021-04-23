@@ -1,6 +1,25 @@
 import '../../src';
 
+// Chosing an arbitrary definition to test the codepath of all definition matchers.
+// Testing one should cover testing all, even though we're not specifically testing
+// the actual defintions' data.
 describe('toBeValidSarifResult', () => {
+  const MATCHER_DATA = [
+    {
+      message: {
+        text: 'Foo',
+      },
+    },
+    {
+      ruleId: 'no-unused-vars',
+      level: 'error',
+      message: {
+        text: "'x' is assigned a value but never used.",
+      },
+    },
+    // eslint-disable-next-line unicorn/no-array-for-each
+  ];
+
   it('does not throw', () => {
     // eslint-disable-next-line unicorn/no-null
     expect(null).not.toBeValidSarifResult();
@@ -36,7 +55,7 @@ describe('toBeValidSarifResult', () => {
   });
 
   it('fails for matching schema when using .not', () => {
-    const sarifResult = require('../__fixtures__/sarif-result.json');
+    const sarifResult = MATCHER_DATA[0];
 
     expect(() => expect(sarifResult).not.toBeValidSarifResult()).toThrow(
       'Expected value not to match schema'
@@ -58,23 +77,9 @@ describe('toBeValidSarifResult', () => {
     }
   });
 
-  [
-    {
-      message: {
-        text: 'Foo',
-      },
-    },
-    {
-      ruleId: 'no-unused-vars',
-      level: 'error',
-      message: {
-        text: "'x' is assigned a value but never used.",
-      },
-    },
-    // eslint-disable-next-line unicorn/no-array-for-each
-  ].forEach((value) => {
+  for (const value of MATCHER_DATA) {
     it('matches Result objects', () => {
       expect(value).toBeValidSarifResult();
     });
-  });
+  }
 });
