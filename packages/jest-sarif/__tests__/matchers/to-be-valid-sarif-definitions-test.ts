@@ -22,24 +22,24 @@ describe('toBeValidSarifResult', () => {
 
   it('does not throw', () => {
     // eslint-disable-next-line unicorn/no-null
-    expect(null).not.toBeValidSarifResult();
+    expect(null).not.toBeValidSarifFor('result');
     // eslint-disable-next-line unicorn/no-useless-undefined
-    expect(undefined).not.toBeValidSarifResult();
-    expect(1).not.toBeValidSarifResult();
-    expect({}).not.toBeValidSarifResult();
-    expect({ hello: 'world' }).not.toBeValidSarifResult();
-    expect({ hello: 'a', world: 'b' }).not.toBeValidSarifResult();
+    expect(undefined).not.toBeValidSarifFor('result');
+    expect(1).not.toBeValidSarifFor('result');
+    expect({}).not.toBeValidSarifFor('result');
+    expect({ hello: 'world' }).not.toBeValidSarifFor('result');
+    expect({ hello: 'a', world: 'b' }).not.toBeValidSarifFor('result');
   });
 
   it('fails for wrong type', () => {
     const testObj = { hello: 1 };
-    expect(() => expect(testObj).toBeValidSarifResult()).toThrow(
+    expect(() => expect(testObj).toBeValidSarifFor('result')).toThrow(
       "should NOT have additional properties, but found 'hello'"
     );
   });
 
   it('fails for missing required keys', () => {
-    expect(() => expect({}).toBeValidSarifResult()).toThrow(
+    expect(() => expect({}).toBeValidSarifFor('result')).toThrow(
       "should have required property 'message'"
     );
   });
@@ -49,7 +49,7 @@ describe('toBeValidSarifResult', () => {
       hello: 'world',
       another: 'property',
     };
-    expect(() => expect(testObj).toBeValidSarifResult()).toThrow(
+    expect(() => expect(testObj).toBeValidSarifFor('result')).toThrow(
       "should NOT have additional properties, but found 'hello'"
     );
   });
@@ -57,7 +57,7 @@ describe('toBeValidSarifResult', () => {
   it('fails for matching schema when using .not', () => {
     const sarifResult = MATCHER_DATA[0];
 
-    expect(() => expect(sarifResult).not.toBeValidSarifResult()).toThrow(
+    expect(() => expect(sarifResult).not.toBeValidSarifFor('result')).toThrow(
       'Expected value not to match schema'
     );
   });
@@ -65,13 +65,13 @@ describe('toBeValidSarifResult', () => {
   it('assertion error matcherResult property contains matcher name and actual value', () => {
     const testObj = { another: 'property' };
     try {
-      expect(testObj).toBeValidSarifResult();
+      expect(testObj).toBeValidSarifFor('result');
     } catch (error) {
       // eslint-disable-next-line jest/no-try-expect, jest/no-conditional-expect
       expect(error.matcherResult).toEqual({
         actual: testObj,
         message: expect.any(Function),
-        name: 'toBeValidSarifResult',
+        name: `toBeValidSarifFor('result')`,
         pass: false,
       });
     }
@@ -79,7 +79,7 @@ describe('toBeValidSarifResult', () => {
 
   for (const value of MATCHER_DATA) {
     it('matches Result objects', () => {
-      expect(value).toBeValidSarifResult();
+      expect(value).toBeValidSarifFor('result');
     });
   }
 });

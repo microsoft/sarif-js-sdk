@@ -6,7 +6,7 @@
   "typings": "lib/index.d.ts",
   "scripts": {
     "build": "tsc --build",
-    "generate": "node ./scripts/generate-sources.js",
+    "generate": "node ./scripts/generate-definitions.js",
     "prepare": "npm run build",
     "test": "jest"
   },
@@ -38,10 +38,6 @@
     "sync-fetch": "^0.3.0"
   },
   "devDependencies": {
-    "ejs": "^3.1.6",
-    "lodash.camelcase": "^4.3.0",
-    "lodash.kebabcase": "^4.1.1",
-    "lodash.startcase": "^4.4.0",
     "prettier": "^2.2.1"
   }
 }

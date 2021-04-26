@@ -1,7 +1,5 @@
-import * as Sarif from 'sarif';
 import { buildMatcher } from '../build-matcher';
-
-type MaybeSarifLog = Sarif.Log | unknown;
+import { Definition } from '../types';
 
 declare global {
   namespace jest {
@@ -11,7 +9,7 @@ declare global {
        * @example
        * expect(value).toBeValidSarifLog();
        */
-      toBeValidSarifLog(): R;
+      toBeValidSarifFor(definition: Definition): R;
     }
     interface Expect {
       /**
@@ -21,11 +19,11 @@ declare global {
        *   expect.toBeValidSarifLog()
        * );
        */
-      toBeValidSarifLog<T>(): jest.JestMatchers<T>;
+      toBeValidSarifFor<T>(definition: Definition): jest.JestMatchers<T>;
     }
   }
 }
 
-export const toBeValidSarifLog = buildMatcher<MaybeSarifLog>();
+export const toBeValidSarifFor = buildMatcher();
 
-expect.extend({ toBeValidSarifLog });
+expect.extend({ toBeValidSarifFor });
