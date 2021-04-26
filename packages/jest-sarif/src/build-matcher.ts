@@ -2,8 +2,7 @@ import { EOL } from 'os';
 import Ajv, { AdditionalPropertiesParams, IfParams } from 'ajv';
 import { matcherHint } from 'jest-matcher-utils';
 import chalk from 'chalk';
-import { getSchema } from './sarif-schema';
-import { BuildMatcherOptions } from './types';
+import { Definition } from './types';
 
 // Keywords where the `Expected: ...` output is hidden
 const ERROR_KEYWORDS_HIDE_EXPECTED = new Set([
@@ -32,6 +31,10 @@ const ERROR_KEYWORDS_SHOW_RECEIVED = new Set(['if', 'not']);
 
 const isObject = (value: unknown) => value !== null && typeof value === 'object';
 
+const sarifV2Schema = require('./schemas/sarif-2.1.0-rtm.5.json');
+
+let ajv: Ajv.Ajv;
+
 const formatForPrint = (input: unknown, displayType: boolean = true) => {
   if (input === undefined || input === null) {
     return chalk.yellow(`<${input}>`);
@@ -51,28 +54,20 @@ const formatForPrint = (input: unknown, displayType: boolean = true) => {
   return `${chalk.yellow(`<${typeof input}>`)} ${input}`;
 };
 
-function getValidatorAndSchema(options: BuildMatcherOptions): [Ajv.Ajv, object | boolean] {
-  const ajv = new Ajv({
-    schemaId: 'auto',
-    validateSchema: false,
-  });
-  const schema = getSchema(options);
-  const draft4MetaSchema = require('ajv/lib/refs/json-schema-draft-04.json');
+function buildValidator(): Ajv.Ajv {
+  if (!ajv) {
+    const draft4MetaSchema = require('ajv/lib/refs/json-schema-draft-04.json');
 
-  ajv.addMetaSchema(draft4MetaSchema);
+    ajv = new Ajv({
+      schemaId: 'auto',
+      validateSchema: false,
+    });
 
-  if (options.definitionName) {
-    // When a definitionName is provided, we need to load the reference schema, which is the SARIF schema itself.
-    // This allows us to reference definitions in the SARIF schema via JSON pointers.
-    // eg. "$ref": "#/definition/result"
-    ajv.addSchema(
-      getSchema({
-        schemaName: 'sarif',
-      })
-    );
+    ajv.addMetaSchema(draft4MetaSchema);
+    ajv.addSchema(sarifV2Schema);
   }
 
-  return [ajv, schema];
+  return ajv;
 }
 
 /**
@@ -81,23 +76,40 @@ function getValidatorAndSchema(options: BuildMatcherOptions): [Ajv.Ajv, object |
  * @param options
  * @param options.matcherName The name of the matcher.
  * @param options.schemaName [Optional] The name of the schema to load.
- * @param options.definitionName [Optional] The name of the SARIF schema definition fragment to dynamically build a schema for.
+ * @param options.definition [Optional] The name of the SARIF schema definition fragment to dynamically build a schema for.
  * @returns {jest.CustomMatcher}
  */
-export function buildMatcher<T>(options: BuildMatcherOptions): jest.CustomMatcher {
-  const [ajv, schema] = getValidatorAndSchema(options);
-
+export function buildMatcher<T>(): jest.CustomMatcher {
+  const ajv = buildValidator();
   // eslint-disable-next-line no-underscore-dangle
   const { verbose } = ajv._opts;
 
-  return function (received: T) {
-    const validate = ajv.compile(schema);
+  return function (received: T, definition?: Definition) {
+    let matcherName: string;
+    let keyRef: string;
+
+    if (definition) {
+      keyRef = `${sarifV2Schema.id}#/definitions/${definition}`;
+      matcherName = `toBeValidSarifFor('${definition}')`;
+    } else {
+      keyRef = sarifV2Schema.id;
+      matcherName = 'toBeValidSarifLog';
+    }
+
+    const validate = ajv.getSchema(keyRef);
+
+    if (!validate) {
+      throw new Error(
+        `Could not find a definition for ${definition}. Please ensure you provide a valid definition.`
+      );
+    }
+
     const pass = validate(received) as boolean;
 
     const message = pass
       ? () => {
           let messageToPrint = `${matcherHint(
-            `.not.${options.matcherName}`,
+            `.not.${matcherName}`,
             undefined,
             'schema'
           )}${EOL}${EOL}Expected value not to match schema${EOL}${EOL}`;
@@ -155,7 +167,7 @@ export function buildMatcher<T>(options: BuildMatcherOptions): jest.CustomMatche
           }
 
           return `${matcherHint(
-            `.${options.matcherName}`,
+            `.${matcherName}`,
             undefined,
             'schema'
           )}${EOL}${EOL}${messageToPrint}`;
@@ -164,7 +176,7 @@ export function buildMatcher<T>(options: BuildMatcherOptions): jest.CustomMatche
     return {
       actual: received,
       message,
-      name: options.matcherName,
+      name: matcherName,
       pass,
     };
   };

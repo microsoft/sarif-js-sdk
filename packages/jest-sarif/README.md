@@ -55,75 +55,31 @@ You can import and use the matchers in one of two ways:
 
 ## Matchers
 
-### `toMatchSarifLog`
+### `toBeValidSarifLog`
 
-Asserts that a value is an valid SARIF log.
+Asserts that a value is a valid SARIF log.
 
 ```ts
-it('validates my SARIF log', () => {
+it('should be a valid SARIF log', () => {
   const sarifLog = buildSarifLog();
 
-  expect(sarifLog).toMatchSarifLog();
+  expect(sarifLog).toBeValidSarifLog();
 });
 ```
 
-## Building Custom Matchers for SARIF Schema Fragments
+### `toBeValidSarifFor(definition)`
 
-You can also build your own matcher that will match a fragment of the SARIF schema. This is useful when you want to match a part of the schema, such as a `Result` object.
+Asserts that a value is a valid SARIF definition type.
 
-This is useful for tools and/or libraries that build SARIF logs incrementally, and want to validate each portion of the log generation as they compose the full log.
-
-:warning: Note - this will only work for properties defined in the `definitions` section of the SARIF schema, as these are definitions that can be referenced through other schemas.
-
-Example:
-
-The following builds a matcher to match SARIF [Result objects](https://docs.oasis-open.org/sarif/sarif/v2.1.0/csprd01/sarif-v2.1.0-csprd01.html#_Toc10541076).
+SARIF logs are complex, and can be made up of many sub-types. Most of these subtypes are defined in reusable definitions within the schema itself. You can use this matcher
+to match on specific sub-types within the schema. This is useful when you want to match valid portions of a log, but not the whole log.
 
 ```ts
-// jest-setup.js
-const { buildMatcher } = require('@microsoft/jest-sarif');
+it('should be a valid SARIF result', () => {
+  const sarifResult = buildSarifResult();
 
-const toMatchSarifResult = buildMatcher({
-  matcherName: 'toMatchSarifResult',
-  definitionName: 'result',
+  expect(sarifResult).toBeValidSarifFor('result');
 });
-
-expect.extend({
-  toMatchSarifResult,
-});
-```
-
-This creates a new schema validator that uses JSON pointers to reference specific SARIF Schema definitions. This is what allows us to generate portions of the schema dynamically, while ensuring the generated schemas adhere to the original.
-
-To use in tests, call it as you would other Jest matchers:
-
-```ts
-it('validates my SARIF result', () => {
-  const result = buildSarifResult();
-
-  expect(result).toMatchSarifResult();
-});
-```
-
-### TypeScript Definitions
-
-When using typescript in addition to the `buildMatcher` function, the dynamic matchers you build will not immediately be recognized by Jest's matcher types. To resolve this, you can add a one-time definition in a local types file that declares these additional matchers. Using the above `toMatchSarifResult` example, you'd add the following type extension to Jest's Matchers:
-
-```ts
-// types/jest-matchers.d.ts
-
-declare global {
-  namespace jest {
-    interface Matchers<R> {
-      toMatchSarifResult(): R;
-      // other dynamic matchers
-    }
-    interface Expect {
-      toMatchSarifResult<T>(): jest.JestMatchers<T>;
-      // other dynamic matchers
-    }
-  }
-}
 ```
 
 ## Attribution

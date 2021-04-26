@@ -2,27 +2,27 @@
 // extending Jest's expect.
 import '../../src';
 
-describe('toMatchSarifLog', () => {
+describe('toBeValidSarifLog', () => {
   it('does not throw', () => {
     // eslint-disable-next-line unicorn/no-null
-    expect(null).not.toMatchSarifLog();
+    expect(null).not.toBeValidSarifLog();
     // eslint-disable-next-line unicorn/no-useless-undefined
-    expect(undefined).not.toMatchSarifLog();
-    expect(1).not.toMatchSarifLog();
-    expect({}).not.toMatchSarifLog();
-    expect({ hello: 'world' }).not.toMatchSarifLog();
-    expect({ hello: 'a', world: 'b' }).not.toMatchSarifLog();
+    expect(undefined).not.toBeValidSarifLog();
+    expect(1).not.toBeValidSarifLog();
+    expect({}).not.toBeValidSarifLog();
+    expect({ hello: 'world' }).not.toBeValidSarifLog();
+    expect({ hello: 'a', world: 'b' }).not.toBeValidSarifLog();
   });
 
   it('fails for wrong type', () => {
     const testObj = { hello: 1 };
-    expect(() => expect(testObj).toMatchSarifLog()).toThrow(
+    expect(() => expect(testObj).toBeValidSarifLog()).toThrow(
       "should NOT have additional properties, but found 'hello'"
     );
   });
 
   it('fails for missing required keys', () => {
-    expect(() => expect({}).toMatchSarifLog()).toThrow("should have required property 'version'");
+    expect(() => expect({}).toBeValidSarifLog()).toThrow("should have required property 'version'");
   });
 
   it('fails when additional properties are found but forbidden', () => {
@@ -30,15 +30,15 @@ describe('toMatchSarifLog', () => {
       hello: 'world',
       another: 'property',
     };
-    expect(() => expect(testObj).toMatchSarifLog()).toThrow(
+    expect(() => expect(testObj).toBeValidSarifLog()).toThrow(
       "should NOT have additional properties, but found 'hello'"
     );
   });
 
-  it('fails for matching schema when using .not', () => {
+  it('fails when validating a valid SARIF log when using .not', () => {
     const sarifLog = require('../__fixtures__/sarif-log.json');
 
-    expect(() => expect(sarifLog).not.toMatchSarifLog()).toThrow(
+    expect(() => expect(sarifLog).not.toBeValidSarifLog()).toThrow(
       'Expected value not to match schema'
     );
   });
@@ -46,13 +46,13 @@ describe('toMatchSarifLog', () => {
   it('assertion error matcherResult property contains matcher name and actual value', () => {
     const testObj = { another: 'property' };
     try {
-      expect(testObj).toMatchSarifLog();
+      expect(testObj).toBeValidSarifLog();
     } catch (error) {
       // eslint-disable-next-line jest/no-try-expect, jest/no-conditional-expect
       expect(error.matcherResult).toEqual({
         actual: testObj,
         message: expect.any(Function),
-        name: 'toMatchSarifLog',
+        name: 'toBeValidSarifLog',
         pass: false,
       });
     }

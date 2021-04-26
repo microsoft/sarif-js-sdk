@@ -1,4 +1,3 @@
-export { toMatchSarifLog } from './matchers/to-match-sarif-log';
-export { buildMatcher } from './build-matcher';
+export * from './matchers';
 
-export type { BuildMatcherOptions } from './types';
+export type { Definition } from './types';
