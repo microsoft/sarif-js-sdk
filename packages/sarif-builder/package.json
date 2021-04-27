@@ -7,6 +7,9 @@
   "repository": "https://github.com/microsoft/sarif-js-sdk",
   "author": "Microsoft Corporation",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsc --build",
     "prepare": "npm run build",

@@ -28,6 +28,9 @@
   ],
   "author": "Microsoft Corporation",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "bugs": {
     "url": "https://github.com/microsoft/sarif-js-sdk/issues"
   },
