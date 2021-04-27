@@ -30,9 +30,9 @@ Once the prep work is completed, the actual release is straight forward:
 
 - First, ensure that you have installed your projects dependencies:
 
-```sh
-npm install
-```
+  ```sh
+  npm install
+  ```
 
 - Second, ensure that you have obtained a
   [GitHub personal access token][generate-token] with the `repo` scope (no
@@ -49,9 +49,27 @@ npm install
 
 - And last (but not least 😁) do your release.
 
-```sh
-npx release-it
-```
+  ```sh
+  npx release-it --no-git.push
+  ```
+
+  :warning: Since this repository has specific protections enabled for the `main` branch, there's an additional step
+  that deviates from the standard `release-it` setup.
+
+  We can't push directly to the `main` branch, so it's necessary to push to a separate `release` branch after the above
+  command completes.
+
+- To release with the required commits, do these additional steps.
+
+  ```sh
+  # create a release branch
+  git checkout -b release
+
+  # push the outstanding release commits to it
+  git push origin release
+  ```
+
+  Then open a PR, get approvals, and merge with `main` to complete the release.
 
 [release-it](https://github.com/release-it/release-it/) manages the actual
 release process. It will prompt you to to choose the version number after which
