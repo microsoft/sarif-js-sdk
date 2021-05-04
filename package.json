@@ -1,6 +1,6 @@
 {
   "name": "sarif-js-sdk",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "private": true,
   "description": "JavaScript code and supporting files for working with the 'Static Analysis Results Interchange Format' (SARIF, see oasis-tcs/sarif-spec)",
   "repository": "https://github.com/microsoft/sarif-js-sdk.git",
