@@ -1,6 +1,6 @@
 {
   "name": "@microsoft/jest-sarif",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "description": "A collection of jest matchers for working with SARIF",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
