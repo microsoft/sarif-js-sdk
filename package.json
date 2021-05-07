@@ -14,7 +14,7 @@
     "build": "tsc --build",
     "build:watch": "tsc --watch",
     "clean": "tsc --build --clean",
-    "lint": "eslint . --ext .ts",
+    "lint": "eslint . --ext .js,.ts",
     "prepare": "npm run build",
     "test": "npm run test --workspaces"
   },
