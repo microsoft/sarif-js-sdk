@@ -683,7 +683,7 @@ describe('formatter:sarif', () => {
   });
 
   describe('when passed rules without metadata', () => {
-    const ruleid = 'ember-best-practices/no-lifecycle-events';
+    const ruleId = 'fake/no-missing-meta';
     const code = [
       {
         filePath: sourceFilePath1,
