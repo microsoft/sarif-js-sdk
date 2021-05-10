@@ -42,6 +42,10 @@ const rules = {
       unexpected: 'Unnecessary semicolon.',
     },
   },
+  'ember-best-practices/no-lifecycle-events': {
+    message:
+      'Do not use events for lifecycle hooks. Please use the actual hooks instead: https://github.com/ember-best-practices/eslint-plugin-ember-best-practices/blob/master/guides/rules/no-lifecycle-events.md',
+  },
 };
 
 const sourceFilePath1 = 'service.js';
@@ -675,6 +679,34 @@ describe('formatter:sarif', () => {
         log.runs[0].results[0].locations[0].physicalLocation.region.startColumn
       ).not.toBeDefined();
       expect(log.runs[0].results[0].locations[0].physicalLocation.region.snippet).not.toBeDefined();
+    });
+  });
+
+  describe('when passed rules without metadata', () => {
+    const ruleid = 'ember-best-practices/no-lifecycle-events';
+    const code = [
+      {
+        filePath: sourceFilePath1,
+        messages: [
+          {
+            message: 'Unexpected value.',
+            ruleId: ruleid,
+            source: 'getValue()',
+          },
+        ],
+      },
+    ];
+
+    it('should return a log with one rule', () => {
+      const log = JSON.parse(formatter(code, { rulesMeta: rules }));
+
+      expect(log.runs[0].tool.driver.rules).toHaveLength(1);
+      expect(log.runs[0].tool.driver.rules[0].id).toBe(ruleid);
+      expect(log.runs[0].tool.driver.rules[0].shortDescription.text).toBe(
+        'No description provided'
+      );
+      expect(log.runs[0].tool.driver.rules[0].helpUri).toBe('Please see details in message');
+      expect(log.runs[0].tool.driver.rules[0].properties.category).toBe('No category provided');
     });
   });
 });
