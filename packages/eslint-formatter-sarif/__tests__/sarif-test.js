@@ -42,9 +42,9 @@ const rules = {
       unexpected: 'Unnecessary semicolon.',
     },
   },
-  'ember-best-practices/no-lifecycle-events': {
+  'fake/no-missing-meta': {
     message:
-      'Do not use events for lifecycle hooks. Please use the actual hooks instead: https://github.com/ember-best-practices/eslint-plugin-ember-best-practices/blob/master/guides/rules/no-lifecycle-events.md',
+      'This rule is fake, and we expect it to have no docs',
   },
 };
 
