@@ -179,9 +179,6 @@ module.exports = function (results, data) {
                     properties: {
                       category: 'No category provided',
                     },
-                    shortDescription: {
-                      text: 'No description provided',
-                    },
                   };
                 }
               }
