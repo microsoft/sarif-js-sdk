@@ -690,7 +690,7 @@ describe('formatter:sarif', () => {
         messages: [
           {
             message: 'Unexpected value.',
-            ruleId: ruleid,
+            ruleId: ruleId,
             source: 'getValue()',
           },
         ],
@@ -701,10 +701,7 @@ describe('formatter:sarif', () => {
       const log = JSON.parse(formatter(code, { rulesMeta: rules }));
 
       expect(log.runs[0].tool.driver.rules).toHaveLength(1);
-      expect(log.runs[0].tool.driver.rules[0].id).toBe(ruleid);
-      expect(log.runs[0].tool.driver.rules[0].shortDescription.text).toBe(
-        'No description provided'
-      );
+      expect(log.runs[0].tool.driver.rules[0].id).toBe(ruleId);
       expect(log.runs[0].tool.driver.rules[0].helpUri).toBe('Please see details in message');
       expect(log.runs[0].tool.driver.rules[0].properties.category).toBe('No category provided');
     });
