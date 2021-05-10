@@ -157,17 +157,31 @@ module.exports = function (results, data) {
               if (meta) {
                 sarifRuleIndices[message.ruleId] = nextRuleIndex++;
 
-                // Create a new entry in the rules dictionary.
-                sarifRules[message.ruleId] = {
-                  id: message.ruleId,
-                  helpUri: meta.docs.url,
-                  properties: {
-                    category: meta.docs.category,
-                  },
-                };
-                if (meta.docs.description) {
-                  sarifRules[message.ruleId].shortDescription = {
-                    text: meta.docs.description,
+                if (meta.docs) {
+                  // Create a new entry in the rules dictionary.
+                  sarifRules[message.ruleId] = {
+                    id: message.ruleId,
+                    helpUri: meta.docs.url,
+                    properties: {
+                      category: meta.docs.category,
+                    },
+                  };
+                  if (meta.docs.description) {
+                    sarifRules[message.ruleId].shortDescription = {
+                      text: meta.docs.description,
+                    };
+                  }
+                  // Some rulesMetas do not have docs property
+                } else {
+                  sarifRules[message.ruleId] = {
+                    id: message.ruleId,
+                    helpUri: 'Please see details in message',
+                    properties: {
+                      category: 'No category provided',
+                    },
+                    shortDescription: {
+                      text: 'No description provided',
+                    },
                   };
                 }
               }
