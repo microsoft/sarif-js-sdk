@@ -42,6 +42,9 @@ const rules = {
       unexpected: 'Unnecessary semicolon.',
     },
   },
+  'fake/no-missing-meta': {
+    message: 'This rule is fake, and we expect it to have no docs',
+  },
 };
 
 const sourceFilePath1 = 'service.js';
@@ -675,6 +678,31 @@ describe('formatter:sarif', () => {
         log.runs[0].results[0].locations[0].physicalLocation.region.startColumn
       ).not.toBeDefined();
       expect(log.runs[0].results[0].locations[0].physicalLocation.region.snippet).not.toBeDefined();
+    });
+  });
+
+  describe('when passed rules without metadata', () => {
+    const ruleId = 'fake/no-missing-meta';
+    const code = [
+      {
+        filePath: sourceFilePath1,
+        messages: [
+          {
+            message: 'Unexpected value.',
+            ruleId: ruleId,
+            source: 'getValue()',
+          },
+        ],
+      },
+    ];
+
+    it('should return a log with one rule', () => {
+      const log = JSON.parse(formatter(code, { rulesMeta: rules }));
+
+      expect(log.runs[0].tool.driver.rules).toHaveLength(1);
+      expect(log.runs[0].tool.driver.rules[0].id).toBe(ruleId);
+      expect(log.runs[0].tool.driver.rules[0].helpUri).toBe('Please see details in message');
+      expect(log.runs[0].tool.driver.rules[0].properties.category).toBe('No category provided');
     });
   });
 });
