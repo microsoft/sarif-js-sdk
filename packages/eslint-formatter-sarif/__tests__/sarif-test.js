@@ -43,8 +43,7 @@ const rules = {
     },
   },
   'fake/no-missing-meta': {
-    message:
-      'This rule is fake, and we expect it to have no docs',
+    message: 'This rule is fake, and we expect it to have no docs',
   },
 };
 
