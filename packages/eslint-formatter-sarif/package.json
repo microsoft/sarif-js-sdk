@@ -41,6 +41,6 @@
   },
   "devDependencies": {
     "rewire": "^5.0.0",
-    "semver-regex": "^3.1.2"
+    "semver-regex": "^3.1.3"
   }
 }
