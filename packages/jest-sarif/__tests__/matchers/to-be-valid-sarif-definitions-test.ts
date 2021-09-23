@@ -66,7 +66,7 @@ describe('toBeValidSarifResult', () => {
     const testObj = { another: 'property' };
     try {
       expect(testObj).toBeValidSarifFor('result');
-    } catch (error) {
+    } catch (error: any) {
       // eslint-disable-next-line jest/no-try-expect, jest/no-conditional-expect
       expect(error.matcherResult).toEqual({
         actual: testObj,
