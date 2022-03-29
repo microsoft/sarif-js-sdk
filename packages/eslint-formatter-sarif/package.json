@@ -1,6 +1,6 @@
 {
   "name": "@microsoft/eslint-formatter-sarif",
-  "version": "2.1.5",
+  "version": "2.1.7",
   "description": "ESLint formatter for the SARIF (Static Analysis Results Interchange Format) v2.1.0 file format",
   "main": "sarif.js",
   "directories": {
@@ -35,12 +35,13 @@
   },
   "homepage": "https://github.com/microsoft/sarif-js-sdk/tree/main/packages/eslint-formatter-sarif#readme",
   "dependencies": {
+    "eslint": "^8.9.0",
     "jschardet": "latest",
     "lodash": "^4.17.14",
     "utf8": "^3.0.0"
   },
   "devDependencies": {
-    "rewire": "^5.0.0",
+    "rewire": "^6.0.0",
     "semver-regex": "^3.1.3"
   }
 }
