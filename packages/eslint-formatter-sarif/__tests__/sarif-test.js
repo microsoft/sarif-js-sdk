@@ -90,6 +90,7 @@ describe('formatter:sarif', () => {
       {
         filePath: sourceFilePath1,
         messages: [],
+        suppressedMessages: [],
       },
     ];
 
@@ -114,6 +115,7 @@ describe('formatter:sarif', () => {
             ruleId: testRuleId,
           },
         ],
+        suppressedMessages: [],
       },
     ];
 
@@ -141,6 +143,126 @@ describe('formatter:sarif', () => {
     });
   });
 
+  describe('when passed one suppressedMessage', () => {
+    const code = [
+      {
+        filePath: sourceFilePath1,
+        messages: [],
+        suppressedMessages: [
+          {
+            message: 'Unexpected value.',
+            severity: 2,
+            ruleId: testRuleId,
+            suppressions: [{ kind: 'directive', justification: 'foo' }],
+          },
+        ],
+      },
+    ];
+
+    it('should return a log with one file and one result', () => {
+      const log = JSON.parse(formatter(code, { rulesMeta: rules }));
+
+      expect(log.runs[0].artifacts[0].location.uri.startsWith(uriPrefix)).toBeTruthy();
+      expect(log.runs[0].artifacts[0].location.uri.endsWith('/' + sourceFilePath1)).toBeTruthy();
+      expect(log.runs[0].results).toBeDefined();
+      expect(log.runs[0].results).toHaveLength(1);
+      expect(log.runs[0].results[0].level).toBe('error');
+      expect(log.runs[0].results[0].message).toBeDefined();
+      expect(log.runs[0].results[0].message.text).toBe(code[0].suppressedMessages[0].message);
+      expect(
+        log.runs[0].results[0].locations[0].physicalLocation.artifactLocation.uri.startsWith(
+          uriPrefix
+        )
+      ).toBeTruthy();
+      expect(
+        log.runs[0].results[0].locations[0].physicalLocation.artifactLocation.uri.endsWith(
+          '/' + sourceFilePath1
+        )
+      ).toBeTruthy();
+      expect(log.runs[0].results[0].locations[0].physicalLocation.artifactLocation.index).toBe(0);
+      expect(log.runs[0].results[0].suppressions).toHaveLength(1);
+      expect(log.runs[0].results[0].suppressions[0].kind).toBe('inSource');
+      expect(log.runs[0].results[0].suppressions[0].justification).toBe(
+        code[0].suppressedMessages[0].suppressions[0].justification
+      );
+    });
+  });
+
+  describe('when passed one suppressedMessage with multiple suppressions', () => {
+    const code = [
+      {
+        filePath: sourceFilePath1,
+        messages: [],
+        suppressedMessages: [
+          {
+            message: 'Unexpected value.',
+            severity: 2,
+            ruleId: testRuleId,
+            suppressions: [
+              { kind: 'directive', justification: 'foo' },
+              { kind: 'directive', justification: 'bar' },
+            ],
+          },
+        ],
+      },
+    ];
+
+    it('should return a log with one file and one result', () => {
+      const log = JSON.parse(formatter(code, { rulesMeta: rules }));
+
+      expect(log.runs[0].results[0].message).toBeDefined();
+      expect(log.runs[0].results[0].message.text).toBe(code[0].suppressedMessages[0].message);
+      expect(log.runs[0].results[0].suppressions).toHaveLength(2);
+      expect(log.runs[0].results[0].suppressions[0].kind).toBe('inSource');
+      expect(log.runs[0].results[0].suppressions[0].justification).toBe(
+        code[0].suppressedMessages[0].suppressions[0].justification
+      );
+      expect(log.runs[0].results[0].suppressions[1].kind).toBe('inSource');
+      expect(log.runs[0].results[0].suppressions[1].justification).toBe(
+        code[0].suppressedMessages[0].suppressions[1].justification
+      );
+    });
+  });
+
+  describe('when passed one message and no suppressedMessages array', () => {
+    const code = [
+      {
+        filePath: sourceFilePath1,
+        messages: [
+          {
+            message: 'Unexpected value.',
+            severity: 2,
+            ruleId: testRuleId,
+          },
+        ],
+      },
+    ];
+
+    it('should return a log with one file and one result', () => {
+      const log = JSON.parse(formatter(code, { rulesMeta: rules }));
+
+      expect(log.runs[0].artifacts[0].location.uri.startsWith(uriPrefix)).toBeTruthy();
+      expect(log.runs[0].artifacts[0].location.uri.endsWith('/' + sourceFilePath1)).toBeTruthy();
+      expect(log.runs[0].results).toBeDefined();
+      expect(log.runs[0].results).toHaveLength(1);
+      expect(log.runs[0].results[0].level).toBe('error');
+      expect(log.runs[0].results[0].message).toBeDefined();
+      expect(log.runs[0].results[0].message.text).toBe(code[0].messages[0].message);
+      expect(
+        log.runs[0].results[0].locations[0].physicalLocation.artifactLocation.uri.startsWith(
+          uriPrefix
+        )
+      ).toBeTruthy();
+      expect(
+        log.runs[0].results[0].locations[0].physicalLocation.artifactLocation.uri.endsWith(
+          '/' + sourceFilePath1
+        )
+      ).toBeTruthy();
+      expect(log.runs[0].results[0].locations[0].physicalLocation.artifactLocation.index).toBe(0);
+      expect(log.runs[0].results[0].suppressions).toBeUndefined();
+    });
+  });
+
   describe('when passed one message with a rule id', () => {
     const ruleid = 'no-unused-vars';
     const code = [
@@ -153,6 +275,7 @@ describe('formatter:sarif', () => {
             source: 'getValue()',
           },
         ],
+        suppressedMessages: [],
       },
     ];
 
@@ -179,6 +302,7 @@ describe('formatter:sarif', () => {
             line: 10,
           },
         ],
+        suppressedMessages: [],
       },
     ];
 
@@ -190,6 +314,10 @@ describe('formatter:sarif', () => {
       );
       expect(
         log.runs[0].results[0].locations[0].physicalLocation.region.startColumn
+      ).not.toBeDefined();
+      expect(log.runs[0].results[0].locations[0].physicalLocation.region.endLine).not.toBeDefined();
+      expect(
+        log.runs[0].results[0].locations[0].physicalLocation.region.endColumn
       ).not.toBeDefined();
       expect(log.runs[0].results[0].locations[0].physicalLocation.region.snippet).not.toBeDefined();
     });
@@ -205,8 +333,11 @@ describe('formatter:sarif', () => {
             ruleId: testRuleId,
             line: 10,
             column: 0,
+            endLine: 10,
+            endColumn: -1,
           },
         ],
+        suppressedMessages: [],
       },
     ];
 
@@ -218,6 +349,12 @@ describe('formatter:sarif', () => {
       );
       expect(
         log.runs[0].results[0].locations[0].physicalLocation.region.startColumn
+      ).not.toBeDefined();
+      expect(log.runs[0].results[0].locations[0].physicalLocation.region.endLine).toBe(
+        code[0].messages[0].endLine
+      );
+      expect(
+        log.runs[0].results[0].locations[0].physicalLocation.region.endColumn
       ).not.toBeDefined();
       expect(log.runs[0].results[0].locations[0].physicalLocation.region.snippet).not.toBeDefined();
     });
@@ -233,8 +370,11 @@ describe('formatter:sarif', () => {
             ruleId: testRuleId,
             line: 10,
             column: 5,
+            endLine: 11,
+            endColumn: 25,
           },
         ],
+        suppressedMessages: [],
       },
     ];
 
@@ -246,6 +386,12 @@ describe('formatter:sarif', () => {
       );
       expect(log.runs[0].results[0].locations[0].physicalLocation.region.startColumn).toBe(
         code[0].messages[0].column
+      );
+      expect(log.runs[0].results[0].locations[0].physicalLocation.region.endLine).toBe(
+        code[0].messages[0].endLine
+      );
+      expect(log.runs[0].results[0].locations[0].physicalLocation.region.endColumn).toBe(
+        code[0].messages[0].endColumn
       );
       expect(log.runs[0].results[0].locations[0].physicalLocation.region.snippet).not.toBeDefined();
     });
@@ -261,6 +407,8 @@ describe('formatter:sarif', () => {
             ruleId: testRuleId,
             line: 10,
             column: 5,
+            endLine: 10,
+            endColumn: 30,
             source: 'getValue()',
           },
         ],
@@ -275,6 +423,12 @@ describe('formatter:sarif', () => {
       );
       expect(log.runs[0].results[0].locations[0].physicalLocation.region.startColumn).toBe(
         code[0].messages[0].column
+      );
+      expect(log.runs[0].results[0].locations[0].physicalLocation.region.endLine).toBe(
+        code[0].messages[0].endLine
+      );
+      expect(log.runs[0].results[0].locations[0].physicalLocation.region.endColumn).toBe(
+        code[0].messages[0].endColumn
       );
       expect(log.runs[0].results[0].locations[0].physicalLocation.region.snippet.text).toBe(
         code[0].messages[0].source
@@ -312,6 +466,43 @@ describe('formatter:sarif', () => {
     });
   });
 
+  describe('when passed one message and one suppressedMessage', () => {
+    const code = [
+      {
+        filePath: sourceFilePath1,
+        messages: [
+          {
+            message: 'Unexpected value.',
+            severity: 2,
+            ruleId: testRuleId,
+            source: 'getValue()',
+          },
+        ],
+        suppressedMessages: [
+          {
+            message: 'Unexpected value.',
+            severity: 2,
+            ruleId: testRuleId,
+            source: 'getValue()',
+            suppressions: [{ kind: 'directive', justification: 'foo' }],
+          },
+        ],
+      },
+    ];
+
+    it('should return a log with two results, one of which has suppressions', () => {
+      const log = JSON.parse(formatter(code, rules));
+
+      expect(log.runs[0].results).toHaveLength(2);
+      expect(log.runs[0].results[0].suppressions).toHaveLength(0);
+      expect(log.runs[0].results[1].suppressions).toHaveLength(1);
+      expect(log.runs[0].results[1].suppressions[0].kind).toBe('inSource');
+      expect(log.runs[0].results[1].suppressions[0].justification).toBe(
+        code[0].suppressedMessages[0].suppressions[0].justification
+      );
+    });
+  });
+
   describe('when passed two results with two messages each', () => {
     const ruleid1 = 'no-unused-vars';
     const ruleid2 = 'no-extra-semi';
@@ -339,9 +530,12 @@ describe('formatter:sarif', () => {
             severity: 1,
             line: 10,
             column: 5,
+            endLine: 10,
+            endColumn: 35,
             source: 'doSomething(thingId)',
           },
         ],
+        suppressedMessages: [],
       },
       {
         filePath: sourceFilePath2,
@@ -351,6 +545,7 @@ describe('formatter:sarif', () => {
             severity: 2,
             ruleId: ruleid2,
             line: 18,
+            column: 20,
           },
           {
             message: 'Custom error.',
@@ -358,6 +553,7 @@ describe('formatter:sarif', () => {
             line: 42,
           },
         ],
+        suppressedMessages: [],
       },
     ];
 
@@ -464,15 +660,24 @@ describe('formatter:sarif', () => {
 
       expect(log.runs[0].results[1].locations[0].physicalLocation.region.startLine).toBe(10);
       expect(log.runs[0].results[1].locations[0].physicalLocation.region.startColumn).toBe(5);
+      expect(log.runs[0].results[1].locations[0].physicalLocation.region.endLine).toBe(10);
+      expect(log.runs[0].results[1].locations[0].physicalLocation.region.endColumn).toBe(35);
       expect(log.runs[0].results[1].locations[0].physicalLocation.region.snippet.text).toBe(
         'doSomething(thingId)'
       );
 
       expect(log.runs[0].results[2].locations[0].physicalLocation.region.startLine).toBe(18);
+      expect(log.runs[0].results[2].locations[0].physicalLocation.region.startColumn).toBe(20);
+      expect(log.runs[0].results[2].locations[0].physicalLocation.region.endLine).not.toBeDefined();
       expect(
-        log.runs[0].results[2].locations[0].physicalLocation.region.startColumn
+        log.runs[0].results[2].locations[0].physicalLocation.region.endColumn
       ).not.toBeDefined();
       expect(log.runs[0].results[2].locations[0].physicalLocation.region.snippet).not.toBeDefined();
+
+      expect(log.runs[0].results[0].suppressions).toBeUndefined();
+      expect(log.runs[0].results[1].suppressions).toBeUndefined();
+      expect(log.runs[0].results[2].suppressions).toBeUndefined();
+      expect(log.runs[0].results[3].suppressions).toBeUndefined();
     });
   });
 
@@ -491,6 +696,7 @@ describe('formatter:sarif', () => {
       {
         filePath: sourceFilePath1,
         messages: [],
+        suppressedMessages: [],
       },
       {
         filePath: sourceFilePath2,
@@ -500,13 +706,17 @@ describe('formatter:sarif', () => {
             severity: 2,
             ruleId: ruleid1,
             line: 18,
+            column: 29,
           },
           {
             message: 'Custom error.',
             ruleId: ruleid2,
             line: 42,
+            column: 7,
+            endColumn: 19,
           },
         ],
+        suppressedMessages: [],
       },
     ];
 
@@ -567,10 +777,21 @@ describe('formatter:sarif', () => {
       ).toBeTruthy();
 
       expect(log.runs[0].results[0].locations[0].physicalLocation.region.startLine).toBe(18);
+      expect(log.runs[0].results[0].locations[0].physicalLocation.region.startColumn).toBe(29);
+      expect(log.runs[0].results[0].locations[0].physicalLocation.region.endLine).not.toBeDefined();
       expect(
-        log.runs[0].results[0].locations[0].physicalLocation.region.startColumn
+        log.runs[0].results[0].locations[0].physicalLocation.region.endColumn
       ).not.toBeDefined();
       expect(log.runs[0].results[0].locations[0].physicalLocation.region.snippet).not.toBeDefined();
+
+      expect(log.runs[0].results[1].locations[0].physicalLocation.region.startLine).toBe(42);
+      expect(log.runs[0].results[1].locations[0].physicalLocation.region.startColumn).toBe(7);
+      expect(log.runs[0].results[1].locations[0].physicalLocation.region.endLine).not.toBeDefined();
+      expect(log.runs[0].results[1].locations[0].physicalLocation.region.endColumn).toBe(19);
+      expect(log.runs[0].results[0].locations[0].physicalLocation.region.snippet).not.toBeDefined();
+
+      expect(log.runs[0].results[1].suppressions).toBeUndefined();
+      expect(log.runs[0].results[1].suppressions).toBeUndefined();
     });
   });
 
