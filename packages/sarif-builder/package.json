@@ -16,6 +16,6 @@
     "test": "jest --passWithNoTests"
   },
   "engines": {
-    "node": ">= 12.11.*"
+    "node": ">= 14"
   }
 }
