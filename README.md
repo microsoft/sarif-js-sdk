@@ -6,6 +6,7 @@ JavaScript code and supporting files for working with the 'Static Analysis Resul
 | ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
 | [@microsoft/jest-sarif][@microsoft/jest-sarif]       | [![Version](https://img.shields.io/npm/v/@microsoft/jest-sarif.svg)](https://npmjs.org/package/@microsoft/jest-sarif)       | Custom SARIF matchers for [Jest][jest].              |
 | [@microsoft/sarif-builder][@microsoft/sarif-builder] | [![Version](https://img.shields.io/npm/v/@microsoft/sarif-builder.svg)](https://npmjs.org/package/@microsoft/sarif-builder) | A builder library for authoring [SARIF][sarif] logs. |
+| [@microsoft/eslint-formatter-sarif][@microsoft/eslint-formatter-sarif] | [![Version](https://img.shields.io/npm/v/@microsoft/eslint-formatter-sarif.svg)](https://npmjs.org/package/@microsoft/eslint-formatter-sarif) | A formatter for ESLint that produces output in the [SARIF][sarif] logs. |
 
 ## Contributing
 
@@ -31,5 +32,6 @@ Any use of third-party trademarks or logos are subject to those third-party's po
 
 [@microsoft/jest-sarif]: https://github.com/microsoft/sarif-js-sdk/tree/main/packages/jest-sarif
 [@microsoft/sarif-builder]: https://github.com/microsoft/sarif-js-sdk/tree/main/packages/sarif-builder
+[@microsoft/eslint-formatter-sarif]: https://github.com/microsoft/sarif-js-sdk/tree/main/packages/eslint-formatter-sarif
 [sarif]: https://github.com/oasis-tcs/sarif-spec
 [jest]: https://facebook.github.io/jest/
