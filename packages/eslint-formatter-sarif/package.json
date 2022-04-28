@@ -52,7 +52,7 @@
       }
     },
     "git": {
-      "tagName": "${name}@${version}"
+      "tagName": "eslint-formatter-sarif@${version}"
     },
     "github": {
       "release": true,

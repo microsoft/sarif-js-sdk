@@ -26,7 +26,7 @@
       }
     },
     "git": {
-      "tagName": "${name}@${version}"
+      "tagName": "sarif-builder@${version}"
     },
     "github": {
       "release": true,

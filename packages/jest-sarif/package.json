@@ -52,7 +52,7 @@
       }
     },
     "git": {
-      "tagName": "${name}@${version}"
+      "tagName": "jest-sarif@${version}"
     },
     "github": {
       "release": true,
