@@ -8,6 +8,12 @@ JavaScript code and supporting files for working with the 'Static Analysis Resul
 | [@microsoft/sarif-builder][@microsoft/sarif-builder] | [![Version](https://img.shields.io/npm/v/@microsoft/sarif-builder.svg)](https://npmjs.org/package/@microsoft/sarif-builder) | A builder library for authoring [SARIF][sarif] logs. |
 | [@microsoft/eslint-formatter-sarif][@microsoft/eslint-formatter-sarif] | [![Version](https://img.shields.io/npm/v/@microsoft/eslint-formatter-sarif.svg)](https://npmjs.org/package/@microsoft/eslint-formatter-sarif) | A formatter for ESLint that produces output in the [SARIF][sarif] logs. |
 
+## Development
+
+This project uses the Volta tool manager to manage the tool dependencies in this project. This allows us to maintain consistency when developing across contributors.
+
+The tool manager is available at [volta.sh](https://volta.sh/). Contributors should ensure this is installed before working in this project.
+
 ## Contributing
 
 This project welcomes contributions and suggestions. Most contributions require you to agree to a
