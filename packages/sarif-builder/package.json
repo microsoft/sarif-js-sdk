@@ -30,6 +30,7 @@
     },
     "github": {
       "release": true,
+      "releaseName": "sarif-builder@${version}",
       "tokenRef": "GITHUB_AUTH"
     }
   }

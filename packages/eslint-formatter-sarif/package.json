@@ -56,6 +56,7 @@
     },
     "github": {
       "release": true,
+      "releaseName": "eslint-formatter-sarif@${version}",
       "tokenRef": "GITHUB_AUTH"
     }
   }
