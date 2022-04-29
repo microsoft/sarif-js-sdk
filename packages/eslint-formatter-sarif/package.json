@@ -43,5 +43,20 @@
   "devDependencies": {
     "rewire": "^6.0.0",
     "semver-regex": "^3.1.3"
+  },
+  "release-it": {
+    "plugins": {
+      "release-it-lerna-changelog": {
+        "infile": "CHANGELOG.md",
+        "launchEditor": true
+      }
+    },
+    "git": {
+      "tagName": "eslint-formatter-sarif@${version}"
+    },
+    "github": {
+      "release": true,
+      "tokenRef": "GITHUB_AUTH"
+    }
   }
 }
