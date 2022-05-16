@@ -1,23 +1,22 @@
 {
-  "name": "@microsoft/jest-sarif",
-  "version": "1.0.0-beta.1",
-  "description": "A collection of jest matchers for working with SARIF",
+  "name": "@microsoft/sarif-matcher-utils",
+  "version": "0.0.1",
+  "description": "Test assertion matcher utils for working with SARIF",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
     "build": "tsc --build",
+    "generate": "node ./scripts/generate-definitions.js",
     "prepare": "npm run build",
-    "test": "jest"
+    "test": "vitest run"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/microsoft/sarif-js-sdk.git"
   },
   "keywords": [
-    "jest",
-    "jest-matcher",
-    "sarif",
-    "jest-sarif"
+    "sarif-matcher",
+    "sarif"
   ],
   "engines": {
     "node": ">= 14"
@@ -35,14 +34,16 @@
   },
   "homepage": "https://github.com/microsoft/sarif-js-sdk#readme",
   "dependencies": {
-    "@microsoft/sarif-matcher-utils": "file://../sarif-matcher-utils",
     "ajv": "^6.12.6",
     "chalk": "^4.1.0",
+    "jest-matcher-utils": "^28.1.0",
     "sync-fetch": "^0.3.0",
     "tslib": "^2.2.0"
   },
   "devDependencies": {
-    "prettier": "^2.2.1"
+    "prettier": "^2.2.1",
+    "vite": "^2.8.6",
+    "vitest": "^0.10.5"
   },
   "release-it": {
     "plugins": {
@@ -52,11 +53,11 @@
       }
     },
     "git": {
-      "tagName": "jest-sarif@${version}"
+      "tagName": "sarif-matcher-utils@${version}"
     },
     "github": {
       "release": true,
-      "releaseName": "jest-sarif@${version}",
+      "releaseName": "sarif-matcher-utils@${version}",
       "tokenRef": "GITHUB_AUTH"
     }
   }

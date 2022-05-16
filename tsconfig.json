@@ -1,4 +1,8 @@
 {
   "files": [],
-  "references": [{ "path": "./packages/jest-sarif" }, { "path": "./packages/sarif-builder" }]
+  "references": [
+    { "path": "./packages/jest-sarif" },
+    { "path": "./packages/sarif-matcher-utils" },
+    { "path": "./packages/sarif-builder" }
+  ]
 }

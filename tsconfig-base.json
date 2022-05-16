@@ -12,6 +12,7 @@
     "baseUrl": ".",
     "paths": {
       "@microsoft/jest-sarif": ["./packages/jest-sarif/lib/index.d.ts"],
+      "@microsoft/sarif-matcher-utils": ["./packages/sarif-matcher-utils/lib/index.d.ts"],
       "@microsoft/sarif-builder": ["./packages/sarif-builder/lib/index.d.ts"],
       "*": ["./types/*"]
     },
