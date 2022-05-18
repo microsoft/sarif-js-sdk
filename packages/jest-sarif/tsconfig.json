@@ -6,5 +6,10 @@
     "esModuleInterop": true,
     "resolveJsonModule": true
   },
+  "references": [
+    {
+      "path": "../sarif-matcher-utils"
+    }
+  ],
   "include": ["./src"]
 }
