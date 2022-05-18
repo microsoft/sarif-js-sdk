@@ -12,7 +12,7 @@
 
 The [Static Analysis Result Interchange Format (SARIF)](https://docs.oasis-open.org/sarif/sarif/v2.1.0/csprd01/sarif-v2.1.0-csprd01.html) is comprehensive spec that provides a standardized schema for tools running static analysis. For tools producing SARIF output, it's useful to be able to test that output to validate it conforms to the SARIF JSON schema.
 
-This library helps achieve that through custom matchers for the Jest testing library. It uses the SARIF JSON Schema to validate the log structure against the actual schema, which helps ensure flexibility when matching whole or partial portions of that schema.
+This library helps achieve that through a custom matcher utility, which allows for assertion extensions for popular test libraries such as `jest` and `vitest`. It uses the SARIF JSON Schema to validate the log structure against the actual schema, which helps ensure flexibility when matching whole or partial portions of that schema.
 
 ## Installation
 
@@ -26,60 +26,55 @@ yarn add @microsoft/sarif-matcher-utils -D
 
 ## Usage
 
-You can import and use the matchers in one of two ways:
+The main API is the `buildMatcher` function, which can be used to extend the `jest` or `vitest` matcher API with custom assertions. The example below demonstrates using the `buildMatcher` function to extend the `vitest` matcher API with custom assertions.
 
-1. (Recommended) Including in a [jest setup file](https://jestjs.io/docs/configuration#setupfilesafterenv-array) as a one-time setup
+Using JavaScript:
 
-   ```ts
-   // ./jest-setup.js
+```js
+// sarif-log-matcher.ts
+import { expect } from 'vitest';
+import { buildMatcher } from '@microsoft/sarif-matcher-utils';
 
-   import '@microsoft/sarif-matcher-utils';
+const toBeValidSarifLog = buildMatcher();
 
-   // or
+expect.extend({ toBeValidSarifLog });
+```
 
-   require('@microsoft/sarif-matcher-utils');
-   ```
-
-   If you're using TypeScript, you'll want to make your setup file a `.ts` file, and use `import '@microsoft/sarif-matcher-utils';` to ensure the type extensions are included.
-
-2. Including one of the following at the top of your test file
-
-   ```ts
-   // my-test-file.js
-
-   import '@microsoft/sarif-matcher-utils';
-
-   // or
-
-   require('@microsoft/sarif-matcher-utils');
-   ```
-
-## Matchers
-
-### `toBeValidSarifLog`
-
-Asserts that a value is a valid SARIF log.
+Using TypeScript, which includes necessary type extensions for `vitest`:
 
 ```ts
+// sarif-log-matcher.ts
+import { expect } from 'vitest';
+import * as Sarif from 'sarif';
+import { buildMatcher } from '@microsoft/sarif-matcher-utils';
+
+type MaybeSarifLog = Sarif.Log | unknown;
+
+interface CustomMatchers<R = unknown> {
+  toBeValidSarifLog(): R;
+}
+
+declare global {
+  namespace Vi {
+    interface Assertion extends CustomMatchers {}
+    interface AsymmetricMatchersContaining extends CustomMatchers {}
+  }
+}
+
+const toBeValidSarifLog = buildMatcher<MaybeSarifLog>();
+
+expect.extend({ toBeValidSarifLog });
+```
+
+Which can then be used in tests:
+
+```js
+import './sarif-log-matcher';
+
 it('should be a valid SARIF log', () => {
   const sarifLog = buildSarifLog();
 
   expect(sarifLog).toBeValidSarifLog();
-});
-```
-
-### `toBeValidSarifFor(definition)`
-
-Asserts that a value is a valid SARIF definition type.
-
-SARIF logs are complex, and can be made up of many sub-types. Most of these subtypes are defined in reusable definitions within the schema itself. You can use this matcher
-to match on specific sub-types within the schema. This is useful when you want to match valid portions of a log, but not the whole log.
-
-```ts
-it('should be a valid SARIF result', () => {
-  const sarifResult = buildSarifResult();
-
-  expect(sarifResult).toBeValidSarifFor('result');
 });
 ```
 

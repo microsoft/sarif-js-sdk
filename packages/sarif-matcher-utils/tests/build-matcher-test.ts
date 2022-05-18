@@ -4,6 +4,17 @@ import * as Sarif from 'sarif';
 
 type MaybeSarifLog = Sarif.Log | unknown;
 
+interface CustomMatchers<R = unknown> {
+  toBeValidSarifLog(): R;
+}
+
+declare global {
+  namespace Vi {
+    interface Assertion extends CustomMatchers {}
+    interface AsymmetricMatchersContaining extends CustomMatchers {}
+  }
+}
+
 const toBeValidSarifLog = buildMatcher<MaybeSarifLog>();
 
 expect.extend({ toBeValidSarifLog });
