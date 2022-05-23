@@ -35,7 +35,7 @@
   },
   "homepage": "https://github.com/microsoft/sarif-js-sdk#readme",
   "dependencies": {
-    "@microsoft/sarif-matcher-utils": "file://../sarif-matcher-utils",
+    "@microsoft/sarif-matcher-utils": "file:../sarif-matcher-utils",
     "ajv": "^6.12.6",
     "chalk": "^4.1.0",
     "sync-fetch": "^0.3.0",
