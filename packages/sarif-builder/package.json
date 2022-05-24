@@ -13,6 +13,7 @@
   "scripts": {
     "build": "tsc --build",
     "prepare": "npm run build",
+    "prepublishOnly": "npm run build",
     "test": "jest --passWithNoTests"
   },
   "engines": {
