@@ -4,6 +4,11 @@ import { matcherHint } from 'jest-matcher-utils';
 import chalk from 'chalk';
 import { Definition } from './types';
 
+type CustomMatcherLike<T> = (
+  received: T,
+  definition?: Definition | undefined
+) => { actual: T; message: () => string; name: string; pass: boolean };
+
 // Keywords where the `Expected: ...` output is hidden
 const ERROR_KEYWORDS_HIDE_EXPECTED = new Set([
   'type',
@@ -77,9 +82,9 @@ function buildValidator(): Ajv.Ajv {
  * @param options.matcherName The name of the matcher.
  * @param options.schemaName [Optional] The name of the schema to load.
  * @param options.definition [Optional] The name of the SARIF schema definition fragment to dynamically build a schema for.
- * @returns {jest.CustomMatcher}
+ * @returns {CustomMatcherLike<T>}
  */
-export function buildMatcher<T>(): jest.CustomMatcher {
+export function buildMatcher<T>(): CustomMatcherLike<T> {
   const ajv = buildValidator();
   // eslint-disable-next-line no-underscore-dangle
   const { verbose } = ajv._opts;

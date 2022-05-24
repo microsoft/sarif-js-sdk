@@ -1,5 +1,4 @@
-import { buildMatcher } from '../build-matcher';
-import { Definition } from '../types';
+import { buildMatcher, Definition } from '@microsoft/sarif-matcher-utils';
 
 declare global {
   namespace jest {

@@ -1,5 +1,5 @@
 import * as Sarif from 'sarif';
-import { buildMatcher } from '../build-matcher';
+import { buildMatcher } from '@microsoft/sarif-matcher-utils';
 
 type MaybeSarifLog = Sarif.Log | unknown;
 

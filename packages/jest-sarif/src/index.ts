@@ -1,3 +1,2 @@
+export { Definition } from '@microsoft/sarif-matcher-utils';
 export * from './matchers';
-
-export type { Definition } from './types';
