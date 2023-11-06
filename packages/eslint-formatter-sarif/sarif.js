@@ -81,6 +81,7 @@ module.exports = function (results, data) {
   let nextRuleIndex = 0;
   const sarifResults = [];
   const embedFileContents = process.env.SARIF_ESLINT_EMBED === 'true';
+  const ignoreSuppressed = process.env.SARIF_ESLINT_IGNORE_SUPPRESSED === 'true';
 
   // Emit a tool configuration notification with this id if ESLint emits a message with
   // no ruleId (which indicates an internal error in ESLint).
@@ -131,7 +132,7 @@ module.exports = function (results, data) {
 
       const containsSuppressedMessages =
         result.suppressedMessages && result.suppressedMessages.length > 0;
-      const messages = containsSuppressedMessages
+      const messages = containsSuppressedMessages && !ignoreSuppressed
         ? [...result.messages, ...result.suppressedMessages]
         : result.messages;
 
@@ -195,7 +196,7 @@ module.exports = function (results, data) {
               sarifRepresentation.ruleIndex = sarifRuleIndices[message.ruleId];
             }
 
-            if (containsSuppressedMessages) {
+            if (containsSuppressedMessages && !ignoreSuppressed) {
               sarifRepresentation.suppressions = message.suppressions
                 ? message.suppressions.map((suppression) => {
                     return {
