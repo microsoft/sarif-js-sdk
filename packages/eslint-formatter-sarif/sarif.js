@@ -132,9 +132,10 @@ module.exports = function (results, data) {
 
       const containsSuppressedMessages =
         result.suppressedMessages && result.suppressedMessages.length > 0;
-      const messages = containsSuppressedMessages && !ignoreSuppressed
-        ? [...result.messages, ...result.suppressedMessages]
-        : result.messages;
+      const messages =
+        containsSuppressedMessages && !ignoreSuppressed
+          ? [...result.messages, ...result.suppressedMessages]
+          : result.messages;
 
       if (messages.length > 0) {
         for (const message of messages) {
