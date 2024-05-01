@@ -1,6 +1,6 @@
 # SARIF formatter for ESLint
 
-`eslint-formatter-sarif` is a formatter for [ESLint](https://www.npmjs.com/package/eslint) that produces output in the SARIF (Static Analysis Results Interchange Format) v2.1.0 format.
+`eslint-formatter-sarif` is a formatter for [ESLint](https://www.npmjs.com/package/eslint) that produces output in the [SARIF (Static Analysis Results Interchange Format)](https://sarif.info) v2.1.0 format.
 
 It is available as an npm module [@microsoft/eslint-formatter-sarif](https://www.npmjs.com/package/@microsoft/eslint-formatter-sarif).
 
