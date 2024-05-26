@@ -198,13 +198,19 @@ module.exports = function (results, data) {
             }
 
             if (containsSuppressedMessages && !ignoreSuppressed) {
+              const uniqueSuppressions = new Set();
               sarifRepresentation.suppressions = message.suppressions
-                ? message.suppressions.map((suppression) => {
-                    return {
-                      kind: suppression.kind === 'directive' ? 'inSource' : 'external',
-                      justification: suppression.justification,
-                    };
-                  })
+                ? message.suppressions.reduce((acc, suppression) => {
+                    const suppressionKey = `${suppression.kind}:${suppression.justification}`;
+                    if (!uniqueSuppressions.has(suppressionKey)) {
+                      uniqueSuppressions.add(suppressionKey);
+                      acc.push({
+                        kind: suppression.kind === 'directive' ? 'inSource' : 'external',
+                        justification: suppression.justification,
+                      });
+                    }
+                    return acc;
+                  }, [])
                 : [];
             }
           } else {
