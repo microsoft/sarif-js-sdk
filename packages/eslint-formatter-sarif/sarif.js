@@ -49,8 +49,6 @@ function getResultLevel(message) {
 //------------------------------------------------------------------------------
 
 module.exports = function (results, data) {
-  const rulesMeta = data.rulesMeta ?? null;
-
   const sarifLog = {
     version: '2.1.0',
     $schema: 'http://json.schemastore.org/sarif-2.1.0-rtm.5',
@@ -158,8 +156,8 @@ module.exports = function (results, data) {
           if (message.ruleId) {
             sarifRepresentation.ruleId = message.ruleId;
 
-            if (rulesMeta && typeof sarifRules[message.ruleId] === 'undefined') {
-              const meta = rulesMeta[message.ruleId];
+            if (data?.rulesMeta && typeof sarifRules[message.ruleId] === 'undefined') {
+              const meta = data.rulesMeta[message.ruleId];
 
               // An unknown ruleId will return null. This check prevents unit test failure.
               if (meta) {
