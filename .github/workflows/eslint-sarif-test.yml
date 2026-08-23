@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@0717577d45739eb3c851188b29f50ed6c0b2194e # v2.8.0
 
       - name: Install ESLint
         run: |
@@ -30,7 +30,7 @@ jobs:
         continue-on-error: true
 
       - name: Upload eslint results as artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@82c141cc518b40d92cc801eee768e7aafc9c2fa2 # v2.3.1
         with:
           name: eslint-results
           path: eslint-results.sarif
@@ -39,7 +39,7 @@ jobs:
         run: npx @microsoft/sarif-multitool validate eslint-results.sarif
 
       - name: Upload SARIF file
-        uses: github/codeql-action/upload-sarif@v1
+        uses: github/codeql-action/upload-sarif@231aa2c8a89117b126725a0e11897209b7118144 # v1.1.39
         with:
           sarif_file: eslint-results.sarif
           wait-for-processing: true
