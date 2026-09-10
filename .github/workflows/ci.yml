@@ -19,8 +19,8 @@ jobs:
         os: [windows, ubuntu]
 
     steps:
-      - uses: actions/checkout@0717577d45739eb3c851188b29f50ed6c0b2194e # v2.8.0
-      - uses: volta-cli/action@efb293bee52c8749b10ecda410b3a3c441fe94d8 # v1.7.1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: volta-cli/action@615a78f6c83e116339c53b94f3f82b4d6c0b7d18 # v5.0.0
       - name: install dependencies
         run: npm install
       - name: lint
@@ -39,8 +39,8 @@ jobs:
         node-version: [14.x, 15.x, 16.x, 17.x]
 
     steps:
-      - uses: actions/checkout@0717577d45739eb3c851188b29f50ed6c0b2194e # v2.8.0
-      - uses: volta-cli/action@efb293bee52c8749b10ecda410b3a3c441fe94d8 # v1.7.1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: volta-cli/action@615a78f6c83e116339c53b94f3f82b4d6c0b7d18 # v5.0.0
       - name: install dependencies
         run: npm install
       - name: build
@@ -61,8 +61,8 @@ jobs:
         os: [windows, ubuntu]
 
     steps:
-      - uses: actions/checkout@0717577d45739eb3c851188b29f50ed6c0b2194e # v2.8.0
-      - uses: volta-cli/action@efb293bee52c8749b10ecda410b3a3c441fe94d8 # v1.7.1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: volta-cli/action@615a78f6c83e116339c53b94f3f82b4d6c0b7d18 # v5.0.0
       - name: install dependencies
         run: npm install --no-package-lock
       - name: build
