@@ -42,9 +42,10 @@
     "tslib": "^2.2.0"
   },
   "devDependencies": {
+    "@types/node": "18.11.9",
     "prettier": "^2.2.1",
-    "vite": "^2.9.9",
-    "vitest": "^0.10.5"
+    "vite": "^6.4.3",
+    "vitest": "^3.2.7"
   },
   "release-it": {
     "plugins": {
