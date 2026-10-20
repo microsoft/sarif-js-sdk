@@ -922,7 +922,6 @@ describe('formatter:sarif', () => {
 
       expect(log.runs[0].tool.driver.rules).toHaveLength(1);
       expect(log.runs[0].tool.driver.rules[0].id).toBe(ruleId);
-      expect(log.runs[0].tool.driver.rules[0].helpUri).toBe('Please see details in message');
       expect(log.runs[0].tool.driver.rules[0].properties.category).toBe('No category provided');
     });
   });

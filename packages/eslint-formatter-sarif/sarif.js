@@ -184,7 +184,6 @@ module.exports = function (results, data) {
                 } else {
                   sarifRules[message.ruleId] = {
                     id: message.ruleId,
-                    helpUri: 'Please see details in message',
                     properties: {
                       category: 'No category provided',
                     },
